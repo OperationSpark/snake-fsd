@@ -3,11 +3,15 @@ Classic Snake Game
 
 <a href = "https://jsbin.com/kumifavazi/1/edit?output" target="_blank"> Play it here:  (Right Click -> Open Link in New Tab)</a>
 
-To download this project into your workspace, Fork it, then enter this command into your bash terminal:
+To download this project into your workspace:
+1) Fork it (Click the "Fork" button in the top right corner and fork it to your
+account
+2) Click on the "Clone or Download" button and copy the github URL
+3) Enter this command into your bash terminal:
 
-    git clone https://github.com/<your_github_username>/snake.git
-    
-or click on the "Clone or Download" button and copy the command into your terminal
+```bash
+git clone <paste copied URL here>
+```
 
 ## Learning Objectives
 - Build an app from start to finish including writing HTML, CSS, and JavaScript
@@ -288,24 +292,34 @@ the next timer tick.
 Below the line of code you just added, add these new lines of code:
 
 ```javascript    
-var nextRow = snake.head.row;
-var nextColumn = snake.head.column;
+var nextRow = snake.head.row + 0;
+var nextColumn = snake.head.column + 0;
     
 // determine how to change the value of nextRow and nextColumn based on snake.head.direction
     
 repositionSquare(snake.head, nextRow, nextColumn);
 ```
 
-The `repositionSquare` function accepts as input square Object (which can be any
-part of the snake's body or the apple), a row, and a 
-column and then places that jQuery object correctly on the scren. 
+The `repositionSquare` function accepts as input an Object (which can be any
+part of the snake's body or the apple), a row, and a column and then places that
+Object correctly on the screen. 
 
 If you look at the definition of this function in the *Helper Functions* section
-you'll notice that it also update's that jQuery Object's `.row` and `.column` 
+you'll notice that it also update's that Object's `.row` and `.column` 
 properties with this new position so that each game item always knows where it 
 is.
 
-**Goal: Determine the snake head's next position**
+To move the snake we first need to move the head. We already know that the head 
+is positioned at `(snake.head.row, snake.head.column)` and it will move one
+square per `update`. 
+
+If we add `1` to its current column, then the snake will move to the right one 
+square. If we add `1` to its current row, then the snake will move down one 
+square. Which direction the snake's head will move is determined by 
+`snake.head.direction`.
+
+**Goal: Determine the snake head's next row and column position based on its 
+current row, column, and direction.**
 
 Use the following pieces of data to calculate the values of `nextRow` and 
 `nextColumn`
@@ -416,8 +430,8 @@ the screen. What gives?!?
 At the bottom of the function you can find this logic:
 
 ```javascript
-var row = 0;
-var column = 0;
+var row = snake.tail.row + 0;
+var column = snake.tail.row + 0;
 
 // code to determine the row and column of the snakeSquare to add to the snake
 
