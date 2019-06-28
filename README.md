@@ -3,9 +3,11 @@ Classic Snake Game
 
 <a href = "https://jsbin.com/kumifavazi/1/edit?output" target="_blank"> Play it here:  (Right Click -> Open Link in New Tab)</a>
 
-To download this project into your workspace, enter this command into your bash terminal:
+To download this project into your workspace, Fork it, then enter this command into your bash terminal:
 
-    git clone https://github.com/benspector3/snake.git
+    git clone https://github.com/<your_github_username>/snake.git
+    
+or click on the "Clone or Download" button and copy the command into your terminal
 
 ## Learning Objectives
 - Build an app from start to finish including writing HTML, CSS, and JavaScript
