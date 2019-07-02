@@ -296,18 +296,16 @@ var nextRow = snake.head.row + 0;
 var nextColumn = snake.head.column + 0;
     
 // determine how to change the value of nextRow and nextColumn based on snake.head.direction
-    
-repositionSquare(snake.head, nextRow, nextColumn);
+
+
+snake.head.row = nextRow;
+snake.head.column = nextColumn;
+repositionSquare(snake.head);
 ```
 
 The `repositionSquare` function accepts as input an Object (which can be any
-part of the snake's body or the apple), a row, and a column and then places that
+part of the snake's body or the apple) and then places that
 Object correctly on the screen. 
-
-If you look at the definition of this function in the *Helper Functions* section
-you'll notice that it also update's that Object's `.row` and `.column` 
-properties with this new position so that each game item always knows where it 
-is.
 
 To move the snake we first need to move the head. We already know that the head 
 is positioned at `(snake.head.row, snake.head.column)` and it will move one
@@ -477,11 +475,12 @@ for ( /* code to loop through the indexes of the snake.body Array*/ ) {
     var nextSnakeSquare = "???";
     var nextRow = "???";
     var nextColumn = "???";
-    
-    repositionSquare(snakeSquare, nextRow, nextColumn);
-    
     var nextDirection = "???";
+    
     snakeSquare.direction = nextDirection;
+    snakeSquare.row = nextRow;
+    snakeSquare.column = nextColumn;
+    repositionSquare(snakeSquare);
 }
 ```
 
