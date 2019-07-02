@@ -14,9 +14,6 @@ var snake = {};
 var apple;
 var score;
 
-// interval variable required for stopping the update function when the game ends
-var updateInterval;
-
 // Constant Variables
 var ROWS = 20;
 var COLUMNS = 20;
@@ -28,11 +25,14 @@ var KEY = {
   DOWN: 40
 };
 
+// interval variable required for stopping the update function when the game ends
+var updateInterval;
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// GAME SETUP //////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-// turn on keyboard inputs
+// TODO: turn on keyboard inputs
 $('body').on('keydown', setNextDirection);
 
 // start the game
@@ -186,8 +186,8 @@ function makeSnakeSquare(row, column) {
   var snakeSquare = $('<div>').addClass('snake').appendTo(board);
 
   // update the row and column properties
-  square.row = row;
-  square.column = column;
+  snakeSquare.row = row;
+  snakeSquare.column = column;
   
   // set the position of the snake on the screen
   repositionSquare(snakeSquare);

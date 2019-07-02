@@ -19,14 +19,14 @@ git clone <paste copied URL here>
 - Use keyboard inputs
 - Organize code using Functions
 
-## Part 1 - HTML & CSS
+# Part 1 - HTML & CSS
 
-### Learning Objectives
+## Learning Objectives
 - Create CSS rules for elements that you plan on adding dynamically using jQuery
 - Learn how the various files in a program are linked together in an index.html file
 - Set up HTML elements whose content will be filled dynamicalyly using jQuery
 
-### TODO 1: Add the initial HTML elements
+## TODO 1: Add the initial HTML elements
 
 This Snake program is simple. It only has a few visual components:
 - The board
@@ -47,7 +47,7 @@ Between the `<body> </body>` tags add the following elements:
 - An empty `<h1></h1>` element with an `id = "score"` property
 - An empty `<h1></h1>` element with an `id = "highScore"` property
 
-### TODO 2: Link the CSS and jQuery files to our index page
+## TODO 2: Link the CSS and jQuery files to our index page
 This program can be built using a single HTML file, a CSS file, and a JavaScript
 file. While all three of these languages can be included in one file, it is
 best practice to separate them into their own files. We'll also be using the 
@@ -79,7 +79,7 @@ When plugging in a JavaScript file to our `index.html` page we use the tag:
 Remember this last one...
 
 
-### TODO 3: Link the index.js file
+## TODO 3: Link the index.js file
 
 Now we want to link our `index.js` file. 
 
@@ -96,7 +96,7 @@ of our page, _after_ the `<body></body>` tags.
 Between the closing `</body>` tag and the closing `</html>` tag, use the `<src>`
 tag to link the `index.js` file.
 
-### TODO 4: Review your work
+## TODO 4: Review your work
 
 Nice job! Our HTML page is now set up with all necessary files plugged in! Often
 times, before you even start programming, setting up a basic file structure is
@@ -127,120 +127,36 @@ your HTML file should look like this:
 
 </html>
 ```
-## Part 2 - JavaScript
+# Part 2 - JavaScript Setup
 
-### Variables
+## Input / Output
 
-Now that the setup has been taken care of, let's get into the fun stuff. To 
-create this program, we need to do some planning. We need to think about a few 
-questions:
-- What data will I need to track while my game is running?
-- How will that data change throughout the course of my game?
-- What data needs to be globally accessible and what data does not?
+Every game provides some way for the user to have control. In this game, we will be using the keyboard to control our snake.
 
-#### Global Data
-
-The following variables will be needed throughout the program.
-
-##### HTML DOM Elements
-- `board`: jQuery Object to manipulate the board element
-- `scoreElement`: jQuery Object to manipulate the score display element
-- `highScoreElement`: jQuery Object to manipulate the high score display element
-
-##### Game Data
-- `snake`: An Object to manage the snake with a head, tail, and body properties. 
-The snake will be made up of individual `snakeSquare` jQuery Objects that each 
-will have their own `.row`, `.column`, and `.direction` properties.
-    - `snake.head`: Reference to the jQuery `snakeSquare` Object at the head of 
-the snake
-    - `snake.body`: An Array containing all `snakeSquare` jQuery Objects. 
-    - `snake.head`: Reference to the jQuery `snakeSquare` Object at the head of 
-the snake
-- `apple`: An Object to manage the active Apple.
-- `score`: The number of apples eaten
-
-##### Constant Data
-- `ROWS`: number of rows in the board
-- `COLUMNS`: number of columns in the board
-- `SQUARE_SIZE`: the pixel dimensions of each square
-- `KEY`: map for keycodes of the arrow keys (see https://keycode.info/)
-
-##### Interval Variable
-- `updateInterval`: the interval that is running the update function 
-- (See https://www.w3schools.com/jsref/met_win_setinterval.asp)
-
-
-### Game Setup
-
-#### How did the snake's head get there?
-
-Go ahead and run the `index.html` file. At this point your screen should 
-show the score at 0 and inside the board will be a single green square. This is
-the snake's head! 
-
-**Right click and inspect the page** and you should see that a new `<div>` 
-element has been added!
-
-How did it get there? Take a look at the `init` function in the Game Setup 
-section and you'll see these lines:
-
-```javascript  
-snake.body = [];
-snake.head = makeSnakeSquare(10, 10).attr('id', 'snake-head');
-```
-
-First, we create the `body` property on our `snake` Object and initialize it as
-an empty Array. By modeling our snake's body with an Array, we can easily add 
-new body parts when the snake eats an apple and, most importantly, it provides 
-an easy way to maintain the order in which each body part is added.
-
-How are body parts of the snake modeled? Let's focus on the function call 
-`makeSnakeSquare(10, 10)`.
-
-Find the function `makeSnakeSquare` and you'll see that it creates a snakeSquare 
-Object using jQuery, adds it to the board, positions it on the screen, adds 
-the new snakeSquare to the `snake.body` Array and sets it as the new tail.
-
-Since this is our first `snakeSquare` we want to assign the returned jQuery 
-Object to `snake.head` so that we have a quick reference to this
-very important snakeSquare Object!
-
-We also set the attribute `id = "snake-head"` using the jQuery `.attr()` 
-function to distinguish the head from the rest of the body using CSS.
-
-#### Other Setup Stuff
-
-**Change over to the console tab in the inspector** and start pressing arrow
-keys. You'll notice that the direction that you press will be printed! This is 
-because of this line:
+**Change over to the console tab in the inspector** and start pressing arrow keys. You'll notice that the direction that you press will be printed! This is because of this line:
 
 ```javascript
 $('body').on('keydown', setNextDirection);
 ```
 
 which makes our webpage respond to key presses with the function
-`setNextDirection`. You can find the definition of this function in the *Helper
-Functions* section at the bottom of the program.
+`setNextDirection`. This is known as an _Asynchronous Function Call_. This means that the function `setNextDirection` is not called in any sort of sequence, rather it is called in response to an `event` occuring.
 
-Inside the `init` function we also set the `score` to `0` and update the 
-`scoreElement`'s text.
+The primary purpose of the `setNextDirection` function is to modify the `.direction` property of the `snake.head` Object. You can find the definition of this function in the *HelperFunctions* section at the bottom of the program. See if you can follow what it does!
 
-#### Turning on the game
+##  Animation
 
-Finally, look at the this line:
+Animation can be easily achieved by rapidly making changes to the appearance of our program. 
+
+In the `init` function, look at the this line:
 
 ```javascript
 updateInterval = setInterval(update, 100);
 ```
 
-This starts our game running by calling the `update` function every `100` 
-milliseconds. This will give us a way to modify the game over time. Like a flip
-book, we will animate our game by making slight adjustments on each timer
-tick. In the next section we will look at the logic of this `update` function.
+The function `setInterval` works by calling the `update` function every `100` milliseconds (10 frames / second). This will give us a way to modify the game over time, like a flipbook! We will animate our game by making slight adjustments on each frame. 
 
-### Game Logic
-
-Let's look at the logic of that `update` function:
+Let's look at the logic of this `update` function:
 
 ```javascript
 function update() {
@@ -260,7 +176,7 @@ function update() {
 On each tick of the timer we move the snake. We'll check if it has collided
 with the wall, itself, or the apple. 
 
-If it collides with the Apple, handle that collision. 
+If it collides with the Apple, handle that collision (this includes lengthening the snake, adding a new apple, and increasing the score). 
 
 If it collides with itself or the wall, end the game.
 
@@ -268,56 +184,152 @@ As you can see, we are using a lot of functions to write out the logic. This
 is a strategy to make the main logic of the program readable. We can
 now dive into each function to get them working!
 
-### TODO 5: Make the head move
+# Part 3) Data and Planning
+
+Now that the setup has been taken care of, let's get into the fun stuff. To create this program, we need to do some planning:
+1) What are the components of the game?
+2) How can I visually render those components?
+3) For each game component, what data will I need to track while my game is running?
+4) For each piece of data, will that data change throughout the course of my game? If so, how?
+
+**Before reading on, write down your answers to these questions**
+
+### 1) What are the components of the game?
+
+- Board (2D grid with 20 rows and 20 columns)
+- Score Display
+- High Score Display
+- Snake
+- Apple
+
+### 2) How can I visually render those components?
+
+Go ahead and run the `index.html` file. At this point your screen should 
+be black with a white outline for the board, show the score at 0 and inside the board will be a single green square. This is the snake's head! The apple will be added later. 
+
+This project will rely on HTML, CSS, and jQuery to render the components of the game. As we know, we can create visual elements on our screen using HTML tags, like so:
+
+```html
+<div id="board"></div>
+```
+
+And then style them using CSS like so:
+
+```css
+#board {
+  width: 440px;
+  height: 440px;
+  border: 1px solid white;
+  background-color: black;
+}
+```
+
+This combination of HTML and CSS creates our board on the screen
+
+Open up the `index.css` file and you'll see that we've created the CSS for this project for you. A few of the style rules will be applied to the HTML elements that we created earlier: `#score`, `#highScore` and `#board`. 
+
+You'll also notice that we have CSS rules defined for the `.snake` and `.apple` classes. But those HTML elements don't exist yet!
+
+Since the Snake and Apple are changing constantly throughout our program, we will be _procedurally generating_ the HTML for those elements using the JavaScript library **jQuery** which can be recognized by the all-in-one function `$` (equivalent to the function `jQuery`).
+
+Open the `index.js` file and find the functions `makeSnakeSquare`. The first line is:
+
+```javascript
+// make the snakeSquare jQuery Object and append it to the board
+var snakeSquare = $('<div>').addClass('snake').appendTo(board);
+```
+
+Let's break this down:
+
+```javascript
+$('<div>')  // create a new div HTML element using the jQuery $ function. Notice the <>
+```
+
+```javascript
+.addClass('snake')  // add the .snake class to that Element
+```
+
+```javascript
+.appendTo(board);  // insert the new Element as a child of the #board
+```
+
+This combination of jQuery method calls will also return a JavaScript Object that we can save in a variable to keep a reference of. This allows us to manipulate it further down the road. A reference to each new `snakeSquare` that we create is added to the `snake.body` Array. More on that later.
+
+Additionally, since `snakeSquare` is just a JavaScript Object, we can easily add properties for each `snakeSquare`:
+- `snakeSquare.row`
+- `snakeSquare.column`
+- `snakeSquare.direction`
+
+NOTE: Everything above can be applied to the Apple as well.
+
+### 3) For each game component, what data will I need to track while my game is running?
+
+At the top of the program, all variables required for the lifetime of the program have been declared for you. By declaring them at the top of the program, we can easily see what data will be important to keep track of for the code to follow.
+
+##### HTML DOM Elements
+
+- `board`: jQuery Object to reference/manipulate the board element
+- `scoreElement`: jQuery Object to reference/manipulate the score display element
+- `highScoreElement`: jQuery Object to reference/manipulate the high score display element
+
+##### Game Data
+- `snake`: An Object to manage the snake with a head, tail, and body properties. 
+The snake will be made up of individual `snakeSquare` jQuery Objects that each 
+will have their own `.row`, `.column`, and `.direction` properties.
+    - `snake.body`: An Array containing all `snakeSquare` jQuery Objects. 
+    - `snake.head`: Reference to the jQuery `snakeSquare` Object at the head of the snake. Same as `snake.body[0]`
+    - `snake.tail`: Reference to the jQuery `snakeSquare` Object at the end of the snake. Same as `snake.body[snake.body.length - 1]`
+- `apple`: Reference to the jQuery `apple` Object
+- `score`: The number of apples eaten
+
+#### Interval Variable
+- `updateInterval`: the interval that is running the update function 
+- (See https://www.w3schools.com/jsref/met_win_setinterval.asp)
+
+##### Constant Data
+- `ROWS`: number of rows in the board
+- `COLUMNS`: number of columns in the board
+- `SQUARE_SIZE`: the pixel dimensions of each square
+- `KEY`: map for keycodes of the arrow keys (see https://keycode.info/)
+  - It's common to create a keycode map when dealing with key commands.
+
+### 4) For each piece of data, will that data change throughout the course of my game? If so, how? 
+
+TODO
+
+# Part 4) Completing the Game's Logic
+
+## TODO 5: Make the head move
 
 **Set up**
 
-The first step in the `update` function is to actually move the snake. Find
-the `moveSnake` function. We'll start by moving the `head` of the snake. To 
-determine what direction our snake will be moving in, add this line below
+The first step in the `update` function is to actually move the snake. Find the `moveSnake` function. We'll start by moving the `head` of the snake. 
+
+We'll start by modifying the `snake.head.direction` property, add this line below
 `TODO 5`:
 
 ```javascript   
 snake.head.direction = snake.head.nextDirection;
 ```
 
-`snake.head.nextDirection` is set based on keyboard input and can only be a 
-value that is perpendicular to `snake.head.direction`. 
+`snake.head.nextDirection` will either be `"left"`, `"right"`, `"down"`, or `"down"`, and is set based on keyboard input. 
 
-When the `moveSnake` function is called, we know that the snake is ready to move
-so we can safely change `snake.head.direction`. This prevents 
-the snake from turning back on itself if multiple commands are issued before 
-the next timer tick.
+Now that we know what direction our snake's head is moving in, we can determine which row and column it should move to on the next frame. We'll do this changing the `snake.head.row` or the `snake.head.column` property.
 
-Below the line of code you just added, add these new lines of code:
+Below the line of code you just added, add these lines of code:
 
-```javascript    
-var nextRow = snake.head.row + 0;
-var nextColumn = snake.head.column + 0;
-    
-// determine how to change the value of nextRow and nextColumn based on snake.head.direction
+```javascript        
+// determine how to change the value of snake.head.row and snake.head.column based on snake.head.direction
+snake.head.row = snake.head.row + 0;
+snake.head.column = snake.head.column + 0;
 
-
-snake.head.row = nextRow;
-snake.head.column = nextColumn;
 repositionSquare(snake.head);
 ```
 
-The `repositionSquare` function accepts as input an Object (which can be any
-part of the snake's body or the apple) and then places that
+Once we determine the new row and column for the head of the snake, we have to actually reposition that HTML element on the screen. The `repositionSquare` function accepts as input a jQuery Object (which can be any part of the snake's body or the apple) and then places that
 Object correctly on the screen. 
 
-To move the snake we first need to move the head. We already know that the head 
-is positioned at `(snake.head.row, snake.head.column)` and it will move one
-square per `update`. 
-
-If we add `1` to its current column, then the snake will move to the right one 
-square. If we add `1` to its current row, then the snake will move down one 
-square. Which direction the snake's head will move is determined by 
-`snake.head.direction`.
-
-**Goal: Determine the snake head's next row and column position based on its 
-current row, column, and direction.**
+**Goal: Determine the snake head's next row and column position based on its current row, column, and direction.**
 
 Use the following pieces of data to calculate the values of `nextRow` and 
 `nextColumn`
@@ -328,11 +340,9 @@ snake.head.column       // the current column of snake.head
 snake.head.direction    // the direction that the head should move towards
 ```
 
-HINT: The top row in the board is row `0` and row numbers increase as you move 
-down. The left-most column in the board is column `0` and column numbers 
-increase as you move to the right.
+HINT: The top row in the board is row `0` and row numbers increase as you move down. The left-most column in the board is column `0` and column numbers increase as you move to the right.
 
-### TODO 6: Check for collisions with the wall
+## TODO 6: Check for collisions with the wall
 
 Now that our snake can move freely, we need to put some constraints on it. We 
 don't want our snake to leave the confines of the board (sorry snake).
@@ -355,7 +365,7 @@ snake.head.row      // the current row of snake.head
 snake.head.column   // the current column of snake.head 
 ```
 
-### TODO 7: Add the apple
+## TODO 7: Add the apple
 
 To create an apple we can call the function `makeApple` which is defined in the
 *Helper Functions* section. We want to create an apple when the game starts so
@@ -371,7 +381,7 @@ it finds a random position for the apple by calling the function
 
 **Refresh your game and try swallowing the apple with the snake**
 
-### TODO 8: Check for collisions with the apple
+## TODO 8: Check for collisions with the apple
 
 Now that our `apple` has been added to the board, we need to train our snake to 
 actually eat it!
@@ -458,7 +468,7 @@ one row below.
 simply create each new snakeSquare at the point that the snake ate its first 
 apple. Complete the next TODO to make your snake properly grow.**
 
-### TODO 10: Move the body
+## TODO 10: Move the body
 
 Find the function definition for `moveSnake`.
 
@@ -503,7 +513,7 @@ being prematurely overwritten.
 Hint 3: Remember that the snake's head is the first entry in `snake.body` so 
 make sure that your loop doesn't include index `0`!
 
-### TODO 11: Check for snake collisions with itself
+## TODO 11: Check for snake collisions with itself
 
 After eating a few apples our snake will be long enough to potentially run into
 its own body! Try doing this and you'll notice that our snake will just breeze
@@ -524,7 +534,7 @@ Hint: Remember that the snake's head is the first entry in `snake.body` so
 make sure that you aren't comparing `snake.head` with `snake.body[0]`!
 
 
-### TODO 12: Make sure our Apple is placed only in available positions
+## TODO 12: Make sure our Apple is placed only in available positions
 
 Our game is complete! Almost complete anyway...
 
