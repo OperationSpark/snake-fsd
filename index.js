@@ -128,8 +128,8 @@ function handleAppleCollision() {
   If the tail is moving "down", place the next snakeSquare above it.
   etc...
   */ 
-  var row = 0;
-  var column = 0;
+  var row = snake.tail.row + 0;
+  var column = snake.tail.column + 0;
   
   // code to determine the row and column of the snakeSquare to add to the snake
   
@@ -185,8 +185,12 @@ function makeSnakeSquare(row, column) {
   // make the snakeSquare jQuery Object and append it to the board
   var snakeSquare = $('<div>').addClass('snake').appendTo(board);
 
+  // update the row and column properties
+  square.row = row;
+  square.column = column;
+  
   // set the position of the snake on the screen
-  repositionSquare(snakeSquare, row, column);
+  repositionSquare(snakeSquare);
   
   // push snakeSquare to the end of the body and set it as the new tail
   snake.body.push(snakeSquare);
@@ -199,16 +203,12 @@ function makeSnakeSquare(row, column) {
  * game Square's row and column properties and then position the gameSquare on the
  * screen. 
  */
-function repositionSquare(square, row, column) {
+function repositionSquare(square) {
   var buffer = 20;
   
-  // update the row and column properties on the square Object
-  square.row = row;
-  square.column = column;
-  
   // position the square on the screen according to the row and column
-  square.css('left', column * SQUARE_SIZE + buffer);
-  square.css('top', row * SQUARE_SIZE + buffer);
+  square.css('left', square.column * SQUARE_SIZE + buffer);
+  square.css('top', square.row * SQUARE_SIZE + buffer);
 }
 
 /* Create an HTML element for the apple using jQuery. Then find a random 
@@ -220,7 +220,10 @@ function makeApple() {
 
   // get a random available position on the board and position the apple
   var randomPosition = getRandomAvailablePosition();
-  repositionSquare(apple, randomPosition.row, randomPosition.column);
+  apple.row = randomPosition.row;
+  apple.column = randomPosition.column;
+  
+  repositionSquare(apple);
 
   return apple;
 }
