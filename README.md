@@ -210,22 +210,22 @@ The `apple.element` Object will be needed in order to make any modifications to 
 
 ### **The Snake and `snakeSquares`**
 
-Modeling the snake will be a bit trickier. Since the snake occupies multiple rows and columns, we will need multiple `snakeSquares` to represent each part of the Snake. 
+Modeling the snake will be a bit trickier. Since the snake occupies multiple rows and columns, we will need multiple Objects to represent each part of the Snake. 
 
-Each `snakeSquare` will have the following properties:
+We can refer to each part of the snake as a `snakeSquare` Object which will have the following properties:
 - `snakeSquare.element`: A reference to the HTML element that represents a part of the snake.
 - `snakeSquare.row`: A reference to the row where the `snakeSquare` currently exists.
 - `snakeSquare.column`: A reference to the row where the `snakeSquare` currently exists.
 - `snakeSquare.direction`: A reference to the direction that this particular `snakeSquare` is currently moving in. 
 
-The `snakeSquare.element` Object will be needed to modify the HTML element using jQuery. The `snakeSquare.row`, `snakeSquare.column`, and `snakeSquare.direction` properties will all be useful in determining the movement of the Snake's body.
+The `snakeSquare.element` Object will be needed to modify the HTML element using jQuery. The `snakeSquare.row`, `snakeSquare.column`, and `snakeSquare.direction` properties will all be useful in determining the movement of that particular `snakeSquare`.
 
-Speaking of the Snake's body, since the Snake is made up of multiple `snakeSquares` that are in a particular order, we can model the body as an Array.
+Speaking of the Snake's body, since the Snake is made up of multiple `snakeSquares` that are in a particular order, we can model the Snake's body as an Array. It will also be useful to have a quick reference for the head and tails of the snake. 
 
-The `snake` Object will then have three properties:
+This data will be stored in the `snake` Object:
 - `snake.body`: An Array containing all `snakeSquare` Objects. 
-- `snake.head`: Reference to the jQuery `snakeSquare` Object at the head of the snake. Same as `snake.body[0]`
-- `snake.tail`: Reference to the jQuery `snakeSquare` Object at the end of the snake. Same as `snake.body[snake.body.length - 1]`
+- `snake.head`: Reference to the jQuery `snakeSquare` Object at the head of the snake. Duplicate of `snake.body[0]`
+- `snake.tail`: Reference to the jQuery `snakeSquare` Object at the end of the snake. Duplicate of `snake.body[snake.body.length - 1]`
 
 ## jQuery: 
 
