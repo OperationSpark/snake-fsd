@@ -1,15 +1,16 @@
-body, #board {
-  background-color: black;
-  
+
+body {
+  background-color: darkgreen;
 }
 
 #board {
   width: 440px;
   height: 440px;
   border: 1px solid white;
+  background-color: black;
 }
 
-#timer, #score, #highScore {
+#score, #highScore {
   color: white;
 }
 

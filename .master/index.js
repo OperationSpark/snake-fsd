@@ -52,10 +52,6 @@ function init() {
   // initialize the first apple
   makeApple();
   
-  // set score to 0
-  scoreElement.text("Score: 0");
-  score = 0;
-  
   // start update interval
   updateInterval = setInterval(update, 100);
 }
@@ -179,10 +175,20 @@ function endGame() {
   // clear board of all elements
   board.empty();
   
-  calculateAndDisplayHighScore();
-  
   // restart the game after 500 ms
-  setTimeout(init, 500);
+  setTimeout(function() {
+    // set score to 0
+    scoreElement.text("Score: 0");
+    score = 0;
+
+    // update the highScoreElement to display the highScore
+    highScoreElement.text("High Score: " + calculateHighScore());
+    
+    init();
+    
+  }, 500);
+
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -196,22 +202,22 @@ function endGame() {
 function makeSnakeSquare(row, column) {  
   var snakeSquare = {}
   
-  // make the snakeSquare jQuery Object and append it to the board
+  // make the new snakeSquare HTML element and save a reference to it
   snakeSquare.element = $('<div>').addClass('snake').appendTo(board);
   
-  // initialize the row and column properties on the snakeSquare Object
+  // save references to the starting row and column values 
   snakeSquare.row = row;
   snakeSquare.column = column;
 
-  // set the position of the snake on the screen
+  // position of the snake on the screen
   repositionSquare(snakeSquare);
   
-  // if this is the head, add the snake-head id
+  // if this is the head, add the 'snake-head' id to the HTML element for unique styling
   if (snake.body.length === 0) {
     snakeSquare.element.attr('id', 'snake-head');
   }
 
-  // add snakeSquare to the end of the body Array and set it as the new tail
+  // add the new snakeSquare to the end of the body Array and set it as the new tail
   snake.body.push(snakeSquare);
   snake.tail = snakeSquare;
 }
@@ -221,15 +227,11 @@ function makeSnakeSquare(row, column) {
  * screen. 
  */
 function repositionSquare(square) {
-  var squareElement = square.element;
-  var row = square.row;
-  var column = square.column;
-  
   var buffer = 20;
   
   // position the square on the screen according to the row and column
-  squareElement.css('left', column * SQUARE_SIZE + buffer);
-  squareElement.css('top', row * SQUARE_SIZE + buffer);
+  square.element.css('left', square.column * SQUARE_SIZE + buffer);
+  square.element.css('top', square.row * SQUARE_SIZE + buffer);
 }
 
 /* Create an HTML element for the apple using jQuery. Then find a random 
@@ -289,8 +291,8 @@ function handleKeyDown(event) {
   console.log(activeKey);
 }
 
-function calculateAndDisplayHighScore() {
-  // retrieve the high score from session storage if it exists, or set it to 0
+// retrieve the high score from session storage if it exists, or set it to 0
+function calculateHighScore() {
   var highScore = sessionStorage.getItem("highScore") || 0;
 
   if (score > highScore) {
@@ -298,7 +300,6 @@ function calculateAndDisplayHighScore() {
     highScore = score;
     alert("New High Score!");
   }
-  
-  // update the highScoreElement to display the highScore
-  highScoreElement.text("High Score: " + highScore);
+
+  return highScore;s
 }

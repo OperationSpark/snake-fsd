@@ -52,10 +52,6 @@ function init() {
   // TODO 8: initialize the first apple
 
 
-  // set score to 0
-  scoreElement.text("Score: 0");
-  score = 0;
-  
   // start update interval
   updateInterval = setInterval(update, 100);
 }
@@ -192,10 +188,15 @@ function endGame() {
   // clear board of all elements
   board.empty();
   
-  calculateAndDisplayHighScore();
-  
+  // update the highScoreElement to display the highScore
+  highScoreElement.text("High Score: " + calculateHighScore());
+  scoreElement.text("Score: 0");
+  score = 0;
+
   // restart the game after 500 ms
   setTimeout(init, 500);
+
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -302,7 +303,7 @@ function handleKeyDown(event) {
 }
 
 
-function calculateAndDisplayHighScore() {
+function calculateHighScore() {
   // retrieve the high score from session storage if it exists, or set it to 0
   var highScore = sessionStorage.getItem("highScore") || 0;
 
@@ -312,6 +313,5 @@ function calculateAndDisplayHighScore() {
     alert("New High Score!");
   }
   
-  // update the highScoreElement to display the highScore
-  highScoreElement.text("High Score: " + highScore);
+  return highScore;
 }
