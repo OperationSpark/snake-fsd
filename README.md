@@ -3,7 +3,7 @@ Note: These project instructions are written for Mac OSX
 # Snake
 Classic Snake Game
 
-<a href = "https://jsbin.com/kumifavazi/1/edit?output" target="_blank"> Play it here:  (Right Click -> Open Link in New Tab)</a>
+<a href = "https://output.jsbin.com/qehader" target="_blank"> Play it here:  (Right Click -> Open Link in New Tab)</a>
 
 #### To download this project into your workspace:
 
