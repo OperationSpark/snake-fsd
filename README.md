@@ -15,6 +15,15 @@ Classic Snake Game
 - [Part 2 - Modeling Data & jQuery](#part-2---modeling-data--jquery)
 - [Part 3 - Animation and Understanding The `update` Function](#part-3---animation-and-understanding-the-update-function)
 - [Part 4 - Completing the Game's Logic](#part-4---completing-the-games-logic)
+  - [TODO 5: Change the snake's direction](#todo-5-change-the-snakes-direction)
+  - [TODO 6: Make the head move](#todo-6-make-the-head-move)
+  - [TODO 7: Check for collisions with the wall](#todo-7-check-for-collisions-with-the-wall)
+  - [TODO 8: Add the apple](#todo-8-add-the-apple)
+  - [TODO 9: Check for collisions with the apple](#todo-9-check-for-collisions-with-the-apple)
+  - [TODO 10: Handle Apple Collisions](#todo-10-handle-apple-collisions)
+  - [TODO 11: Move the body](#todo-11-move-the-body)
+  - [TODO 12: Check for snake collisions with itself](#todo-12-check-for-snake-collisions-with-itself)
+  - [TODO 13: Make sure our Apple is placed only in available positions](#todo-13-make-sure-our-apple-is-placed-only-in-available-positions)
 
 # Installation & Setup
 
