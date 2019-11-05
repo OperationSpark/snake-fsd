@@ -8,6 +8,10 @@ Classic Snake Game
 **Table of Contents**
 - [Installation & Setup](#installation--setup)
 - [Part 1 - HTML & CSS](#part-1---html--css)
+  - [TODO 1: Add the initial HTML elements](#todo-1-add-the-initial-html-elements)
+  - [TODO 2: Add CSS](#todo-2-add-css)
+  - [TODO 3: Add JavaScript](#todo-3-add-javascript)
+  - [TODO 4: Review your work](#todo-4-review-your-work)
 - [Part 2 - Modeling Data & jQuery](#part-2---modeling-data--jquery)
 - [Part 3 - Animation and Understanding The `update` Function](#part-3---animation-and-understanding-the-update-function)
 - [Part 4 - Completing the Game's Logic](#part-4---completing-the-games-logic)
