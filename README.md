@@ -5,7 +5,13 @@ Classic Snake Game
 
 <a href = "https://output.jsbin.com/qehader" target="_blank"> Play it here:  (Right Click -> Open Link in New Tab)</a>
 
-#### To download this project into your workspace:
+[Installation & Setup](#installation--setup)
+[Part 1 - HTML & CSS](#part-1---html--css)
+[Part 2 - Modeling Data & jQuery](#part-2---modeling-data--jquery)
+
+# Installation & Setup
+
+## To download this project into your workspace:
 
 First locate the folder in which you would like to download this code. If you need a lesson on how to navigate your file system using the Terminal, see the link below:
 
@@ -22,7 +28,7 @@ account
 git clone <paste copied URL here>
 ```
 
-#### To run this project:
+## To run this project:
 
 At this point your working directory should be the folder that holds your `snake` folder. `cd` into the `snake` directory:
 
