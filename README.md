@@ -109,7 +109,7 @@ Now, we can see the board as a square with a border! Feel free to modify this CS
 
 ## TODO 3: Add JavaScript
 
-Now, we that our CSS has been linked to our HTML, we need to do the same to add JavaScript. To connect our `index.js` file, we have to use the `<script>` tag. 
+Now that our CSS has been linked to our HTML, we need to do the same to add JavaScript. To connect our `index.js` file, we have to use the `<script>` tag. 
 
 **At the bottom of the `index.html` file, _below_ the  `<body></body>` tags and above the closing `</html>` tag, add the following HTML**:
 
@@ -126,8 +126,7 @@ an externally loaded file, it must first read through that entire file before
 moving on to the next line in our HTML.
 
 This becomes a problem if our JavaScript file relies on manipulating _existing_ HTML content on the page. If those elements have not yet been loaded in yet, our JavaScript file will throw some errors. 
-W
-e have to wait for those elements to be loaded _before_  we can load in the `index.js` file. So, we have to link this file at the bottom of our page, _after_ the `<body></body>` tags.
+We have to wait for those elements to be loaded _before_  we can load in the `index.js` file. So, we have to link this file at the bottom of our page, _after_ the `<body></body>` tags.
 
 **Save your code and run the `index.html` file (or start your server, or refresh your running application page if it is already running).**
 
@@ -215,7 +214,7 @@ Modeling the snake will be a bit trickier. Since the snake occupies multiple row
 We can refer to each part of the snake as a `snakeSquare` Object which will have the following properties:
 - `snakeSquare.element`: A reference to the HTML element that represents a part of the snake.
 - `snakeSquare.row`: A reference to the row where the `snakeSquare` currently exists.
-- `snakeSquare.column`: A reference to the row where the `snakeSquare` currently exists.
+- `snakeSquare.column`: A reference to the column where the `snakeSquare` currently exists.
 - `snakeSquare.direction`: A reference to the direction that this particular `snakeSquare` is currently moving in. 
 
 The `snakeSquare.element` Object will be needed to modify the HTML element using jQuery. The `snakeSquare.row`, `snakeSquare.column`, and `snakeSquare.direction` properties will all be useful in determining the movement of that particular `snakeSquare`.
