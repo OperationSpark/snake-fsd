@@ -405,7 +405,7 @@ When any kind of `event` occurs (a mouse click, a key press, scrolling, the page
 In the case of the `keydown` event, the `event.which` property tells us the **keycode** of the key that was pressed. We'll want to save this keycode to use later, hence the `activeKey` variable. 
 
 
-## TODO 5: Step 2) Changing the Snake's Direction Based on Keyboard Input
+### Step 2) Changing the Snake's Direction Based on Keyboard Input
 
 With the `activeKey` variable saving the last pressed key we can start using that information to move our snake. At first, we might think that pressing a key should move the snake. A pseudocode solution for this might look like this:
 
