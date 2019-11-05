@@ -5,9 +5,12 @@ Classic Snake Game
 
 <a href = "https://output.jsbin.com/qehader" target="_blank"> Play it here:  (Right Click -> Open Link in New Tab)</a>
 
-[Installation & Setup](#installation--setup)
-[Part 1 - HTML & CSS](#part-1---html--css)
-[Part 2 - Modeling Data & jQuery](#part-2---modeling-data--jquery)
+**Table of Contents**
+- [Installation & Setup](#installation--setup)
+- [Part 1 - HTML & CSS](#part-1---html--css)
+- [Part 2 - Modeling Data & jQuery](#part-2---modeling-data--jquery)
+- [Part 3 - Animation and Understanding The `update` Function](#part-3---animation-and-understanding-the-update-function)
+- [Part 4 - Completing the Game's Logic](#part-4---completing-the-games-logic)
 
 # Installation & Setup
 
@@ -305,7 +308,7 @@ This combination of jQuery method calls will also return a JavaScript Object tha
 
 NOTE: Everything above can be applied to the Apple as well.
 
-# Part 3 - Animation and Understanding The `update` Function's Logic
+# Part 3 - Animation and Understanding The `update` Function
 
 ##  Animation
 
@@ -353,9 +356,9 @@ While the logic for the `update` function is laid out, the functions it calls ar
 
 The answer to all of these questions, we need a way to **_model_** the Snake and the Apple in Data.
 
-# Part 4) Completing the Game's Logic
+# Part 4 - Completing the Game's Logic
 
-## TODO 5: Part 1) A Lesson on How Keyboard Input Works
+## TODO 5: Step 1) A Lesson on How Keyboard Input Works
 
 *NOTE: Part 1 of this TODO will not require any coding. Read this section thoroughly to understand how keyboard inputs are registered in this game before moving on to Part 2**
 
@@ -396,7 +399,7 @@ When any kind of `event` occurs (a mouse click, a key press, scrolling, the page
 In the case of the `keydown` event, the `event.which` property tells us the **keycode** of the key that was pressed. We'll want to save this keycode to use later, hence the `activeKey` variable. 
 
 
-## TODO 5: Part 2) Changing the Snake's Direction Based on Keyboard Input
+## TODO 5: Step 2) Changing the Snake's Direction Based on Keyboard Input
 
 With the `activeKey` variable saving the last pressed key we can start using that information to move our snake. At first, we might think that pressing a key should move the snake. A pseudocode solution for this might look like this:
 
