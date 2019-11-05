@@ -362,7 +362,9 @@ The answer to all of these questions, we need a way to **_model_** the Snake and
 
 # Part 4 - Completing the Game's Logic
 
-## TODO 5: Step 1) A Lesson on How Keyboard Input Works
+## TODO 5: Change the snake's direction
+
+### Step 1) A Lesson on How Keyboard Input Works
 
 *NOTE: Part 1 of this TODO will not require any coding. Read this section thoroughly to understand how keyboard inputs are registered in this game before moving on to Part 2**
 
@@ -436,6 +438,7 @@ No? Well we haven't programmed our game to react to the other arrow keys!
 **Goal: using the `activeKey` variable and the `KEY` Object, program `snake.head.direction` to change according to the arrow key that is currently being pressed.**
 
 When you are finished save your code, refresh your game and try pressing the arrow keys. Make sure that all four directions work! Finally, comment out the `console.log`. We don't want to clutter the Console.
+
 ## TODO 6: Make the head move
 
 Now that we can control the direction our Snake _should_ move in, we can actually start moving the snake. Find `// TODO 6` in the `moveSnake` function definition.
