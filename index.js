@@ -137,7 +137,7 @@ function handleAppleCollision() {
   scoreElement.text("Score: " + score);
   
   // Remove existing Apple and create a new one
-  apple.remove();
+  apple.element.remove();
   makeApple();
   
   /* 
