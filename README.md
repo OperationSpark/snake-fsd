@@ -206,7 +206,7 @@ your HTML file should look like this:
 
 # Part 2 - Modeling Data & jQuery
 
-### Note: For the remainder of this project we will exclusively be using the `index.js` file.
+### Note: There will be no coding in Parts 2 or 3
 
 ## Modeling the Snake and the Apple with Arrays and Objects
 
