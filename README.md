@@ -493,13 +493,17 @@ for ( /* code to loop through the indexes of the snake.body Array*/ ) {
 
 In order for the snake to follow the head, each snakeSquare must learn the position and direction of the snakeSquare that is in front of it. Since we want to apply this same logic to every snakeSquare in the `snake.body` Array, iteration using a `for` loop will be very helpful!
 
+
+  > **Hint 1:** The `for` loop will need to be set up in a particular way to make sure that each snakeSquare can follow the snake that comes before it without any data being prematurely overwritten. It may be beneficial to loop backwards. **TO REITERATE: Whether your loop iterates from front-to-back or back-to-front is a _critical_ consideration for this step.**
+
+  > **Hint 2:** Remember that the snake's head is the first entry in `snake.body` so make sure that your loop doesn't include index `0`!
+
+  > **HINT 3:** After making the basis your loop, think through how this process will work. How can you access each `snakeSquare` in the `snake.body` Array? How do you think we can use the index of each `snakeSquare` to figure out what the `nextSnakeSquare` should be?  
+
+
 - **11b)** Reposition each snakeSquare in the `snake.body` Array and update the direction for each snakeSquare.
 
-  > **HINT 1:** Before you start coding, think through how this process will work. How can you access each `snakeSquare` in the `snake.body` Array? How do you know what the `nextSnakeSquare` should be?
 
-  > **Hint 2:** The `for` loop will need to be set up in a particular way to make sure that each snakeSquare can follow the snake that comes before it without any data being prematurely overwritten. **TO REITERATE: Whether your loop iterates from front-to-back or back-to-front is a _critical_ consideration for this step.**
-
-  > **Hint 3:** Remember that the snake's head is the first entry in `snake.body` so make sure that your loop doesn't include index `0`!
 
 ## TODO 12: Check for snake collisions with itself
 
