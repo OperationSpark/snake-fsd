@@ -181,7 +181,7 @@ The `apple.element` Object will be needed in order to make any modifications to 
 > it finds a random position for the apple by calling the function
 > `getRandomAvailablePosition()`. We'll get to that much later.
 >
-> **2.** Up in the `init()` function at TODO 4b-2, call the `makeApple()` function.
+>   **2.** Up in the `init()` function at TODO 4b-2, call the `makeApple()` function.
 
 ### **The Snake and `snakeSquares`**
 
@@ -239,7 +239,7 @@ Most of this will be handled automatically, but first you'll have to create and 
 > - `snakeSquare.element = $('<div>').addClass('snake').appendTo(board);` creates a new `<div>` element using jQuery and adds it to the board. Notice how we have `$(<div>)` written instead of `$(div)`. This is an important distinction to make, as the `<>` tells jQuery to create a new element entirely.
 > - `repositionSquare(snakeSquare)` calls an already existing helper function; the function is located directly below the `makeSnakeSquare()` function, and its job is to basically draw the new squae at the correct location on your screen.
 >
-> **2.** Put the following lines of code in the `init()` function at the TODO 4c-2 location:
+>   **2.** Put the following lines of code in the `init()` function at the TODO 4c-2 location:
 >
 > ```js
 > // initialize the snake's body as an empty Array
