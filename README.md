@@ -350,9 +350,9 @@ Try using the other arrow keys. See anything?
 
 No? Well we haven't programmed our game to react to the other arrow keys!
 
-- **6b)** Using the `activeKey` variable and the `KEY` Object (located in the "Constant Variables" section near the top of your program), program `snake.head.direction` to change according to the arrow key that is currently being pressed.\*\*
+- **6b)** Using the `activeKey` variable and the `KEY` Object (located in the "Constant Variables" section near the top of your program), program `snake.head.direction` to change according to the arrow key that is currently being pressed.
 
-  When you are finished save your code, refresh your game and try pressing the arrow keys. Make sure that all four directions work! Finally, comment out the `console.log`. We don't want to clutter the Console.
+When you are finished, save your code, refresh your game and try pressing the arrow keys. Make sure that all four directions work! Finally, comment out the `console.log`. We don't want to clutter the Console.
 
 ## TODO 7: Make the head move
 
