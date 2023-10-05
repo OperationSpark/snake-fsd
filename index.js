@@ -40,9 +40,12 @@ $("body").on("keydown", handleKeyDown);
 init();
 
 function init() {
-  // TODO 4b-2: initialize the apple
   // TODO 4c-2: initialize the snake
+
+  // TODO 4b-2: initialize the apple
+
   // TODO 5a: Initialize the interval
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
