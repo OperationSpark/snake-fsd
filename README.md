@@ -181,7 +181,7 @@ The `apple.element` Object will be needed in order to make any modifications to 
 > it finds a random position for the apple by calling the function
 > `getRandomAvailablePosition()`. We'll get to that much later.
 >
->   **2.** Up in the `init()` function at TODO 4b-2, call the `makeApple()` function.
+> **2.** Up in the `init()` function at TODO 4b-2, call the `makeApple()` function.
 
 ### **The Snake and `snakeSquares`**
 
@@ -493,17 +493,13 @@ for ( /* code to loop through the indexes of the snake.body Array*/ ) {
 
 In order for the snake to follow the head, each snakeSquare must learn the position and direction of the snakeSquare that is in front of it. Since we want to apply this same logic to every snakeSquare in the `snake.body` Array, iteration using a `for` loop will be very helpful!
 
+> **Hint 1:** The `for` loop will need to be set up in a particular way to make sure that each snakeSquare can follow the snake that comes before it without any data being prematurely overwritten. It may be beneficial to loop backwards. **TO REITERATE: Whether your loop iterates from front-to-back or back-to-front is a _critical_ consideration for this step.**
 
-  > **Hint 1:** The `for` loop will need to be set up in a particular way to make sure that each snakeSquare can follow the snake that comes before it without any data being prematurely overwritten. It may be beneficial to loop backwards. **TO REITERATE: Whether your loop iterates from front-to-back or back-to-front is a _critical_ consideration for this step.**
+> **Hint 2:** Remember that the snake's head is the first entry in `snake.body` so make sure that your loop doesn't include index `0`!
 
-  > **Hint 2:** Remember that the snake's head is the first entry in `snake.body` so make sure that your loop doesn't include index `0`!
-
-  > **HINT 3:** After making the basis your loop, think through how this process will work. How can you access each `snakeSquare` in the `snake.body` Array? How do you think we can use the index of each `snakeSquare` to figure out what the `nextSnakeSquare` should be?  
-
+> **HINT 3:** After making the basis your loop, think through how this process will work. How can you access each `snakeSquare` in the `snake.body` Array? How do you think we can use the index of each `snakeSquare` to figure out what the `nextSnakeSquare` should be?
 
 - **11b)** Reposition each snakeSquare in the `snake.body` Array and update the direction for each snakeSquare.
-
-
 
 ## TODO 12: Check for snake collisions with itself
 
@@ -546,7 +542,7 @@ return randomPosition;
 
 You won't want to change that, but you'll need to use conditionals to set the value to `false` if the apple ends up on top of the snake, as that will make the loop try placing the apple again.
 
-- **13b)** Modify the code block in the `while` loop so that if the randomly generated position is occupied by any part of the snake's body, it loops again.
+- **13a)** Modify the code block in the `while` loop so that if the randomly generated position is occupied by any part of the snake's body, it loops again.
 
   > **HINT 1:** You need to make sure that the apple doesn't appear on _any_ piece of your snake. How did you check for collisions between the head and the body? A similar approach would be fitting here, but with two differences.
   >
