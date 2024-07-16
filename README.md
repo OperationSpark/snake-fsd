@@ -546,7 +546,7 @@ You won't want to change that, but you'll need to use conditionals to set the va
 
   > **HINT 1:** You need to make sure that the apple doesn't appear on _any_ piece of your snake. How did you check for collisions between the head and the body? A similar approach would be fitting here, but with two differences.
   >
-  > 1.  You should be comparing the `apple` to the snake pieces instead of the head.
+  > 1.  You should be comparing the `randomPosition` to the snake pieces instead of the head.
   > 2.  This check _should_ check the entire snake and not ignore the head.
 
   > **HINT 2:** If the first hint wasn't enough, you need to use iteration _within_ the `while` loop. You are more than allowed to put a `for` loop inside of a `while` loop if you want to, and you can put a conditional statement inside of that as well if needed.
