@@ -86,8 +86,11 @@ At this point your screen should be blank except for the score and the high scor
 <br>
 <br>
 
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Do you see a score and high score appearing?</b></p>
+  <h3 align="center"><b>✅ CHECKPOINT: Basic HTML Elements</b></h3>
+  <p align="center"><b>You should see:</b></p>
+  <p align="center">• "Score: 0" text at the top of your page</p>
+  <p align="center">• "High Score: 0" text below that</p>
+  <p align="center">• No game board visible yet (that comes next!)</p>
   <p align="center"><b>DO NOT MOVE FORWARD UNTIL BOTH SCORES ARE DISPLAYED</b></p>
 
 <br>
@@ -118,8 +121,11 @@ Now, we can see the board as a square with a border! Feel free to modify this CS
 <br>
 <br>
 
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Do you see the board appearing with a border?</b></p>
+  <h3 align="center"><b>✅ CHECKPOINT: Game Board Appears</b></h3>
+  <p align="center"><b>You should see:</b></p>
+  <p align="center">• A square game board with a black border</p>
+  <p align="center">• The board should be positioned below your score displays</p>
+  <p align="center">• The board should be empty (no snake or apple yet)</p>
   <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOU SEE THE BOARD WITH A BORDER</b></p>
 
 <br>
@@ -161,6 +167,29 @@ Technically, this tag can be added anywhere _above_ the `index.js` file. However
 
 If you open the console you shouldn't see any errors now relating to jQuery (the `$` symbol).
 
+### 🔧 Common Setup Issues & Solutions
+
+<details>
+<summary><strong>Click here if you're seeing errors</strong></summary>
+
+**Problem: "$ is not defined" error**
+- **Solution:** Make sure you added the jQuery script tag in the `<head>` section: `<script src="jquery.min.js"></script>`
+- **Check:** The jQuery script must come BEFORE the index.js script
+
+**Problem: Page is blank/no styling**
+- **Solution:** Verify your CSS link is correct: `<link rel="stylesheet" type="text/css" href="index.css" />`
+- **Check:** Make sure the CSS link is in the `<head>` section
+
+**Problem: Nothing happens when I press keys**
+- **Solution:** Check the browser console for JavaScript errors
+- **Check:** Make sure your index.js script tag is at the bottom, after the `</body>` tag
+
+**Problem: Snake or apple don't appear**
+- **Solution:** Open browser console and look for error messages
+- **Common issue:** Typos in variable names or missing semicolons
+
+</details>
+
 <hr>
 
 <br>
@@ -186,6 +215,18 @@ The first step in designing a piece of software is deciding on how to model the 
 At the top of the `index.js` file is a setup section. All variables that your program will need should be declared there. By declaring them at the top of the program, we can easily see what data will be important to keep track of for the code to follow.
 
 - **4a)** Declare `snake` and `apple` variables as empty Objects in the `index.js` file just below the `"Game Variables"` comment. Also declare a `score` variable and give it the initial value of `0` at this same location.
+
+  **Find line 13 in `index.js` where you see `// TODO 4a: Create the snake, apple and score variables` and add these lines directly below it:**
+
+  ```js
+  var snake = {};
+  var apple = {};
+  var score = 0;
+  ```
+
+  > **Why Objects?** We use Objects (`{}`) for `snake` and `apple` because they need to store multiple related properties (like position, direction, etc.). This keeps our data organized and easy to access.
+  >
+  > **Coming up:** In TODO 4b and 4c, you'll give these empty objects their properties and functionality!
 
 ### TODO 4-1) **The Apple**
 
@@ -232,8 +273,11 @@ The `apple.element` Object will be needed in order to make any modifications to 
 <br>
 <br>
 
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Do you see a red square appearing on your board?</b></p>
+  <h3 align="center"><b>✅ CHECKPOINT: Apple Appears</b></h3>
+  <p align="center"><b>You should see:</b></p>
+  <p align="center">• A small red square somewhere on your game board</p>
+  <p align="center">• The red square should be randomly positioned</p>
+  <p align="center">• If you refresh the page, the apple might appear in a different spot</p>
   <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOU SEE THE RED SQUARE</b></p>
 
 <br>
@@ -348,7 +392,14 @@ One common method for doing this is by using a function called `setInterval()`. 
   updateInterval = setInterval(update, 100);
   ```
 
-  In this case, the function `setInterval()` works by calling the `update()` function every `100` milliseconds (10 frames / second). Each time the function is called we will modify the appearance of our game. (See https://www.w3schools.com/jsref/met_win_setinterval.asp)
+  > **Game Loop Concept:** Most games use a "game loop" - a function that runs continuously to:
+  > 1. Update game state (move objects, check collisions)
+  > 2. Redraw the screen with new positions
+  > 3. Repeat!
+  >
+  > `setInterval(update, 100)` creates our game loop by calling `update()` every 100 milliseconds (10 times per second). This creates smooth animation by rapidly updating positions.
+  >
+  > **Why 100ms?** This gives us 10 FPS (frames per second), which is fast enough for smooth Snake movement but slow enough that players can control it. Feel free to experiment with different values!
 
 Next, we need to make sure that the `update()` function actually has something to do. Otherwise it doesn't matter how often the `setInterval()` function calls `update()`, because nothing will happen if the `update()` function is empty.
 
@@ -382,6 +433,26 @@ Next, we need to make sure that the `update()` function actually has something t
 <h3 align="center">YOU DO NOT NEED TO OPEN LIVE SERVER FOR THIS TODO</h3>
 <br>
 
+---
+
+## 📋 Part 2 Summary: What You've Built
+
+**Congratulations!** You've completed the foundation of your Snake game. Here's what you accomplished:
+
+✅ **Data Modeling**: Created Objects to represent the snake and apple with properties like position and direction  
+✅ **Game Loop**: Set up `setInterval()` to create smooth animation by calling `update()` 10 times per second  
+✅ **Visual Elements**: Used jQuery to create and position HTML elements for the snake and apple  
+✅ **Game State**: Established the basic structure for tracking score and game components  
+
+**What's working now:**
+- Apple appears randomly on the board
+- Snake head is visible and positioned correctly
+- Game loop is running (even though movement isn't implemented yet)
+
+**Coming up in Part 3:** You'll add movement, collision detection, and all the game logic that makes Snake actually playable!
+
+---
+
 # Part 3 - Completing the Game's Logic
 
 ## TODO 6: Change the snake's direction
@@ -404,6 +475,8 @@ The following code is already provided for you in the _Setup_ section of the pro
   ```
 
   What this code will do is save the key that has been pressed for processing later (in the `activeKey` variable), and it also prints the pressed key so that you can see in the console if the event is working.
+  
+  > **Connection:** This builds on the keyboard event listener we set up earlier: `$("body").on("keydown", handleKeyDown);` (line 37 in index.js)
 
 ### Step 2) Changing the Snake's Direction Based on Keyboard Input
 
@@ -425,6 +498,22 @@ Right now, if you were to press the left arrow you would see the direction `"lef
 
 - **6b)** Using the `activeKey` variable and the `KEY` Object (located in the "Constant Variables" section near the top of your program), program `snake.head.direction` to change according to the arrow key that is currently being pressed.
 
+  **Complete the if/else structure by adding the missing directions:**
+
+  ```js
+  if (activeKey === KEY.LEFT) {
+    snake.head.direction = "left";
+  } else if (activeKey === KEY.RIGHT) {
+    snake.head.direction = "right";
+  } else if (activeKey === KEY.UP) {
+    snake.head.direction = "up";
+  } else if (activeKey === KEY.DOWN) {
+    snake.head.direction = "down";
+  }
+  ```
+
+  > **Remember:** The KEY object maps arrow keys to their numeric codes (LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40). This makes our code more readable than using the raw numbers.
+
   When you are finished, save your code, refresh your game, and try pressing the arrow keys. Make sure that all four directions work!
 
 <hr>
@@ -440,6 +529,38 @@ Right now, if you were to press the left arrow you would see the direction `"lef
   <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOU SEE ALL FOUR DIRECTIONS PRINTING AND HAVE SUBSEQUENTLY COMMENTED OUT THE CONSOLE.LOG</b></p>
 
 <br>
+
+### 🐛 Debugging Tips: Using console.log() Strategically
+
+> **console.log() is your debugging superpower!** Here are smart ways to use it throughout this project:
+>
+> **Position Debugging:**
+> ```js
+> console.log("Snake head at:", snake.head.row, snake.head.column);
+> console.log("Apple at:", apple.row, apple.column);
+> ```
+>
+> **Direction Debugging:**
+> ```js
+> console.log("Snake direction:", snake.head.direction);
+> console.log("Active key pressed:", activeKey);
+> ```
+>
+> **Collision Debugging:**
+> ```js
+> console.log("Hit wall?", hasHitWall());
+> console.log("Hit apple?", hasCollidedWithApple());
+> ```
+>
+> **Body Movement Debugging:**
+> ```js
+> // In your loop, add:
+> console.log("Moving piece", i, "from", snakeSquare.row, snakeSquare.column, "to", nextRow, nextColumn);
+> ```
+>
+> **Pro Tip:** Add console.log statements when something isn't working, then remove them once it's fixed!
+
+<br>
 <br>
 <br>
 <br>
@@ -450,7 +571,7 @@ Now that we can control the direction our Snake _should_ move in, we can actuall
 
 On each call to `update`, `moveSnake()` will be called. After the `checkForNewDirection()` function is called (which you just programmed in TODO 6), `snake.head.direction` will either be `"left"`, `"right"`, `"down"`, or `"down"`. Now, we will need to move the snake exactly 1 square in the direction that it is facing.
 
-- **7a)** Below `// TODO 7` add these lines of code:
+- **7a)** **Find the `moveSnake()` function and locate `// TODO 7`** (around line 95). Add these lines of code directly below the comment:
 
 ```js
 if (snake.head.direction === "left") {
@@ -489,13 +610,24 @@ The next step in our game's `update` logic is to check if the snake has either c
 
 Find the function `hasHitWall()`.
 
+> **Collision Detection Concept:** In games, we need to constantly check if objects are overlapping or hitting boundaries. For our grid-based Snake game, collision detection means comparing positions:
+> - **Wall collision:** Is the snake's head outside the valid grid boundaries?
+> - **Self collision:** Does the head occupy the same position as any body part?
+> - **Apple collision:** Does the head share the same row/column as the apple?
+
 > - **8a)** Program the function to return `true` if the snake's head has collided with any of the four walls of the board and `false` otherwise.
 >
->   Use the following pieces of data to determine if the snake's head has collided with one of the walls.
+>   **Think about boundaries:** Our grid has rows 0 to 19 and columns 0 to 19. The snake hits a wall when:
+>   - It goes above row 0 (row becomes -1)
+>   - It goes below row 19 (row becomes 20) 
+>   - It goes left of column 0 (column becomes -1)
+>   - It goes right of column 19 (column becomes 20)
+>
+>   Use the following pieces of data to determine if the snake's head has collided with one of the walls:
 >
 > ```js
-> ROWS; // the total number of ROWS in the board
-> COLUMNS; // the total number of COLUMNS in the board
+> ROWS; // the total number of ROWS in the board (20)
+> COLUMNS; // the total number of COLUMNS in the board (20)
 > snake.head.row; // the current row of snake.head
 > snake.head.column; // the current column of snake.head
 > ```
@@ -593,9 +725,18 @@ makeSnakeSquare(row, column);
 
 As we can see, right now we are creating a new snakeSquare at position (0, 0). It is your job to fix this.
 
-- **10a)** determine the `row` and `column` where the next snakeSquare should be placed so that it is added on to the tail of the snake
+- **10a)** **Find the `handleAppleCollision()` function and locate the section starting with `var row = 0;`** (around line 142). Replace the `0` values to determine the `row` and `column` where the next snakeSquare should be placed so that it is added on to the tail of the snake.
 
-  Use the `snake.tail.direction` with conditional statements to decide which way the tail is moving. Then, use `snake.tail.row`, and `snake.tail.column` (plus an offset of 1 depending on the snake's direction) to determine the correct row and column of the new piece.
+  **Use conditional statements with `snake.tail.direction` like this pattern:**
+  ```js
+  if (snake.tail.direction === "left") {
+    row = snake.tail.row;
+    column = snake.tail.column + 1; // Place the new piece to the RIGHT of the tail
+  }
+  // Add similar conditions for "right", "up", and "down"
+  ```
+
+  > **Logic:** If the tail is moving LEFT, the new piece should be placed to the RIGHT of it (one column higher). Apply this same "opposite direction" logic for all four directions.
 
 > **HINT:** If the snake's tail is moving right, the next snakeSquare should be one column to the left. If the column is moving up, the next snakeSquare should be one row below. Use this logic to figure out the location of the new piece for all four directions that the snake might be moving.
 
@@ -623,6 +764,8 @@ Find the function definition for `moveSnake()`.
 
 Our program is still not working properly. When our snake eats an apple, a new snakeSquare is added to the board in the correct location. However, each new snakeSquare does not follow the snake!
 
+> **Building on:** This completes the snake movement started in TODO 7 (head movement) and TODO 10 (adding body pieces).
+
 - **11a)** Add this code below the comment for `TODO: 11`:
 
 ```javascript
@@ -647,11 +790,27 @@ for ( /* code to loop through the indexes of the snake.body Array*/ ) {
 
 - **11b)** Reposition each snakeSquare in the `snake.body` Array and update the direction for each snakeSquare.
 
-> **Hint 1:** The `for` loop will need to be set up in a particular way to make sure that each snakeSquare can follow the snake that comes before it without any data being prematurely overwritten. It may be beneficial to loop backwards. **TO REITERATE: Whether your loop iterates from front-to-back or back-to-front is a _critical_ consideration for this step.**
+> **Why Loop Backwards? (CRITICAL CONCEPT):** Imagine you have a 3-piece snake: Head → Body1 → Tail. If you loop forward:
+> 1. Body1 takes Head's position
+> 2. Tail tries to take Body1's position, but Body1 now has Head's position!
+> 
+> If you loop backwards:
+> 1. Tail takes Body1's original position  
+> 2. Body1 takes Head's original position
+> 3. Each piece gets the correct "previous" position
+>
+> **This is why backwards iteration is ESSENTIAL - it preserves the data each piece needs!**
 
-> **Hint 2:** Remember that the snake's head is the first entry in `snake.body` so make sure that your loop doesn't include index `0`!
+> **Hint 1:** Start your loop from the last index (`snake.body.length - 1`) and work backwards to index `1` (skip index `0` since that's the head).
 
-> **HINT 3:** After making the basis your loop, think through how this process will work. How can you access each `snakeSquare` in the `snake.body` Array? How do you think we can use the index of each `snakeSquare` to figure out what the `nextSnakeSquare` should be?
+> **Hint 2:** For any snakeSquare at index `i`, the snakeSquare in front of it is at index `i - 1`.
+
+> **HINT 3:** Your loop should look something like:
+> ```js
+> for (var i = snake.body.length - 1; i > 0; i--) {
+>   // Your code here
+> }
+> ```
 
 <hr>
 
