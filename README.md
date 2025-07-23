@@ -1,9 +1,27 @@
-# Snake
+# 🐍 Snake Game
 
-Classic Snake Game
+Build your own version of the classic arcade game, **Snake** — where a hungry snake slithers around the board, gobbling up apples and growing longer with each bite! This project will guide you step-by-step through building the game from the ground up using HTML, CSS, JavaScript, and jQuery.
+
+Along the way, you’ll practice essential programming skills like keyboard input handling, data modeling with objects and arrays, screen updates using helper functions, and collision detection logic.
+
+<img src="https://github.com/OperationSpark/images/blob/master/hs-curriculum/asd-projects/snake/snakeDemo.gif?raw=true" alt="snake game demo gif" />
+
+---
+
+## What You'll Learn
+
+- How to build a full project from start to finish using HTML, CSS, and JavaScript
+- How to model game data using arrays and objects
+- How to handle real-time input with keyboard events
+- How to draw and update elements dynamically with jQuery
+- How to break code into helper functions for clarity and reuse
+
+---
 
 **Table of Contents**
 
+- [Overview](#overview)
+- [Project Grading](#project-grading)
 - [Part 1 - HTML & CSS](#part-1---html--css)
   - [TODO 1: Add the initial HTML elements](#todo-1-add-the-initial-html-elements)
   - [TODO 2: Add CSS](#todo-2-add-css)
@@ -16,27 +34,60 @@ Classic Snake Game
   - [TODO 7: Make the head move](#todo-7-make-the-head-move)
   - [TODO 8: Check for collisions with the wall](#todo-8-check-for-collisions-with-the-wall)
   - [TODO 9: Check for collisions with the apple](#todo-9-check-for-collisions-with-the-apple)
-  - [TODO 10: Handle Apple Collisions](#todo-10-handle-apple-collisions)
-  - [TODO 11: Move the body](#todo-11-move-the-body)
+  - [TODO 10: Move the body](#todo-10-move-the-body)
+  - [TODO 11: Handle Apple Collisions](#todo-11-handle-apple-collisions)
   - [TODO 12: Check for snake collisions with itself](#todo-12-check-for-snake-collisions-with-itself)
   - [TODO 13: Make sure our Apple is placed only in available positions](#todo-13-make-sure-our-apple-is-placed-only-in-available-positions)
+- [🌟 Extra Challenges](#-extra-challenges)
+- [📤 Push Your Work](#-push-your-work)
+
+---
+
+## Overview
+
+Your goal is to build a playable Snake game that runs in the browser. You'll start by building a static HTML and CSS layout, then use JavaScript and jQuery to animate the snake, track score, detect collisions, and spawn apples. Once your game works, try out the optional challenges to add new features like color changes or competitive gameplay!
+
+---
 
 ## Learning Objectives
 
-- Build an app from start to finish including writing HTML, CSS, and JavaScript
-- Manipulate HTML elements using the jQuery JavaScript library
-- Use keyboard inputs
-- Organize code using Functions
+- Become comfortable writing and linking together HTML, CSS, and JavaScript files
+- Practice using jQuery to create and manipulate elements on the screen
+- Store and update data using arrays and objects
+- Use keyboard inputs to control behavior in real-time
+- Organize code into clearly defined helper functions
+
+---
 
 ## Push Reminder
 
-To push to GitHub, enter the following commands in bash:
+To save your progress on GitHub, use the following commands in your terminal:
 
-```
+```bash
 git add -A
-git commit -m "saving data shapes"
+git commit -m "finished setup for snake"
 git push
 ```
+
+## Project Grading
+
+## 🧮 Project Grading
+
+Your project is graded based on completion of each major step. Make sure each TODO is fully implemented and functional before moving on to the next!
+
+| Section / TODO | Description                                   | Points |
+| -------------- | --------------------------------------------- | ------ |
+| **Part 1**     | Set up HTML, CSS, and JavaScript              | 7      |
+| **TODO 4**     | Model the snake and apple with objects/arrays | 8      |
+| **TODO 5**     | Create and configure the game loop            | 5      |
+| **TODO 6**     | Handle keyboard input and set direction       | 10     |
+| **TODO 7**     | Move the snake’s head based on direction      | 10     |
+| **TODO 8**     | Detect wall collisions                        | 10     |
+| **TODO 9**     | Detect apple collisions                       | 10     |
+| **TODO 10**    | Add new snake segment on apple collision      | 10     |
+| **TODO 11**    | Make the snake’s body follow the head         | 10     |
+| **TODO 12**    | Detect collisions with the snake itself       | 10     |
+| **TODO 13**    | Ensure apple spawns only in empty positions   | 10     |
 
 # Part 1 - HTML & CSS
 
@@ -49,25 +100,20 @@ git push
 - Learn about Asynchronous function calls
 - Learn how to organize code in a program
 
-## TODO 1: Add the initial HTML elements
+## **TODO 1: Add the Initial HTML Elements**
 
-This Snake program is simple. It only has a few visual components:
+🎯 **Goal:** Set up the main structure of the page, including the board and score display elements.
 
-- The board
-- The score display
-- The high score display
-- The snake
-- The apple
+---
 
-**Which of these components are static and which will be dynamic?**
+### Step-by-Step Instructions
 
-For now, we can set up the stationary elements first. When we get to the
-JavaScript portion of this project we'll deal with the snake and apple.
+1. **Open your `index.html` file.**
 
-- **1a)** Between the `<body> </body>` tags add the following elements:
-  - A `<div></div>` element with an `id = "board"` attribute
-  - An `<h1></h1>` element with an `id = "score"` attribute
-  - Another `<h1></h1>` element with an `id = "highScore"` attribute
+2. **Inside the `<body>` section**, add the following three elements:
+   - A `<div>` with the ID `board`
+   - An `<h1>` with the ID `score` and the text “Score: 0”
+   - Another `<h1>` with the ID `highScore` and the text “High Score: 0”
 
 ```html
 <div id="board"></div>
@@ -75,219 +121,244 @@ JavaScript portion of this project we'll deal with the snake and apple.
 <h1 id="highScore">High Score: 0</h1>
 ```
 
-**Save your code and run the `index.html` file (or start your server, or refresh your running application page if it is already running).**
+3. **Save your file**, and preview it in the browser by opening `index.html` or using Live Server.
 
-At this point your screen should be blank except for the score and the high score.
+---
 
-<hr>
+### 💡 What’s Happening Here?
 
-<br>
-<br>
-<br>
-<br>
+You’re creating the **static parts** of the game — the things that will appear on screen and stay in place while the game runs. The board will eventually contain the snake and apples, and the score displays will update as you play.
 
-  <h3 align="center"><b>✅ CHECKPOINT: Basic HTML Elements</b></h3>
-  <p align="center"><b>You should see:</b></p>
-  <p align="center">• "Score: 0" text at the top of your page</p>
-  <p align="center">• "High Score: 0" text below that</p>
-  <p align="center">• No game board visible yet (that comes next!)</p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL BOTH SCORES ARE DISPLAYED</b></p>
+The snake and apple elements will be **dynamic** — they’ll be added later using JavaScript.
 
-<br>
-<br>
-<br>
-<br>
+---
 
-## TODO 2: Add CSS
+### ✅ **Check Your Work!**
 
-> **READ:** Open up the file `index.css`. Here, you'll find that we've already defined some CSS rules for the various components of the game. But why is our page unstyled?
->
-> Since our server is only running the `index.html` file, it doesn't have access to the `index.css` file by default - we need to link it!
+- "Score: 0" and "High Score: 0" should both appear at the top of the page.
+- The board itself won't be visible yet — that's coming up in the next step.
+- If you don’t see the scores:
+  - Double-check your HTML syntax
+  - Make sure the IDs and text match exactly
 
-- **2a)** Inside the `<head>` element, add the following HTML:
+<br><br><br><br>
 
-  ```html
-  <link rel="stylesheet" type="text/css" href="index.css" />
-  ```
+## **TODO 2: Add CSS**
 
-**Save your code and run the `index.html` file (or start your server, or refresh your running application page if it is already running).**
+🎯 **Goal:** Link your stylesheet and make the game board visible with a border.
 
-Now, we can see the board as a square with a border! Feel free to modify this CSS to suit your own style, but be careful if you change the width or height of anything as that may cause problems later.
+---
 
-<hr>
+### Step-by-Step Instructions
 
-<br>
-<br>
-<br>
-<br>
+1. **Open your `index.html` file.**
 
-  <h3 align="center"><b>✅ CHECKPOINT: Game Board Appears</b></h3>
-  <p align="center"><b>You should see:</b></p>
-  <p align="center">• A square game board with a black border</p>
-  <p align="center">• The board should be positioned below your score displays</p>
-  <p align="center">• The board should be empty (no snake or apple yet)</p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOU SEE THE BOARD WITH A BORDER</b></p>
+2. Inside the `<head>` section, **add the following line** to connect your CSS:
 
-<br>
-<br>
-<br>
-<br>
+```html
+<link rel="stylesheet" type="text/css" href="index.css" />
+```
 
-## TODO 3: Add JavaScript
+3. **Save your file**, then preview your game in the browser.
 
-Now that our CSS has been linked to our HTML, we need to do the same to add JavaScript. To connect our `index.js` file, we have to use the `<script>` tag.
+---
 
-- **3a)** At the bottom of the `index.html` file, _below_ the `<body></body>` tags and above the closing `</html>` tag, add the following HTML:
+### 💡 Why This Matters
 
-  ```html
-  <script src="index.js"></script>
-  ```
+Without linking the CSS file, your page will load — but it won’t look like anything! By adding this line, you're telling the browser to also load your styles so the layout and visuals appear as intended.
 
-Why are we not adding this tag in the `<head>`?
+---
 
-> **READ:** When the browser loads our `index.html` file, it starts at the top of the file and works its way down. When it gets to an externally loaded file, it must first read through that entire file before moving on to the next line in our HTML.
->
-> This becomes a problem if our JavaScript file relies on manipulating _existing_ HTML content on the page. If those elements have not yet been loaded in yet, our JavaScript file will throw some errors. As such, we need to load _this_ JavaScript in after our HTML
+### ✅ **Check Your Work!**
 
-**Save your code and run the `index.html` file (or start your server, or refresh your running application page if it is already running).**
+- You should now see:
+  - A square game board with a border
+  - The board placed below the score displays
+  - The board should be empty (no snake or apple yet)
+- If the board doesn’t appear:
+  - Make sure your `<link>` tag is inside the `<head>`
+  - Double-check the filename: it must be exactly `index.css`
 
-### jQuery
+<br><br><br><br>
 
-If you open up the console, you will notice that we have some errors. This is because our `index.js` file uses jQuery which we haven't loaded into the `index.html` file yet.
+## **TODO 3: Add JavaScript**
 
-- **3b)** The jQuery code has been downloaded for you in the file `jQuery.min.js`. Back in the `<head>` element, add the following HTML:
+🎯 **Goal:** Link your JavaScript and jQuery files so your game logic can run properly.
 
-  ```html
-  <script src="jquery.min.js"></script>
-  ```
+---
 
-Technically, this tag can be added anywhere _above_ the `index.js` file. However it is best practice to load in external scripts in the `<head>` aside from the `index.js` file.
+### Step-by-Step Instructions
 
-**Save your code and run the `index.html` file (or start your server, or refresh your running application page if it is already running).**
+1. **Open your `index.html` file.**
 
-If you open the console you shouldn't see any errors now relating to jQuery (the `$` symbol).
+2. At the **very bottom of the file**, just **before the closing `</html>` tag**, add this line to connect your JavaScript:
 
-### 🔧 Common Setup Issues & Solutions
+```html
+<script src="index.js"></script>
+```
 
-<details>
-<summary><strong>Click here if you're seeing errors</strong></summary>
+> ⏳ **Why put it at the bottom?**  
+> JavaScript often needs to interact with HTML elements — and if those elements haven’t loaded yet, the code will break. Putting the script at the end ensures the page loads _first_, then runs the JavaScript.
 
-**Problem: "$ is not defined" error**
-- **Solution:** Make sure you added the jQuery script tag in the `<head>` section: `<script src="jquery.min.js"></script>`
-- **Check:** The jQuery script must come BEFORE the index.js script
+3. Still in the `<head>` section, add **one more script tag** to load jQuery:
 
-**Problem: Page is blank/no styling**
-- **Solution:** Verify your CSS link is correct: `<link rel="stylesheet" type="text/css" href="index.css" />`
-- **Check:** Make sure the CSS link is in the `<head>` section
+```html
+<script src="jquery.min.js"></script>
+```
 
-**Problem: Nothing happens when I press keys**
-- **Solution:** Check the browser console for JavaScript errors
-- **Check:** Make sure your index.js script tag is at the bottom, after the `</body>` tag
+> 💡 This must come _before_ your `index.js` file loads — otherwise your code will try to use jQuery before it exists.
 
-**Problem: Snake or apple don't appear**
-- **Solution:** Open browser console and look for error messages
-- **Common issue:** Typos in variable names or missing semicolons
+4. **Save your file** and reload the page in the browser.
 
-</details>
+---
 
-<hr>
+### 🧰 Troubleshooting Common Setup Issues
 
-<br>
-<br>
-<br>
-<br>
+If your game isn’t working as expected, check these common problems:
 
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER AND OPEN THE CONSOLE</b></h3>
-  <p align="center"><b>Do you see any jQuery errors (the $ symbol)?</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD IF YOU SEE JQUERY ERRORS</b></p>
+| Problem                                 | Fix                                                            |
+| --------------------------------------- | -------------------------------------------------------------- |
+| ❌ `$ is not defined`                   | Make sure jQuery is loaded _before_ `index.js`                 |
+| ❌ Page looks unstyled                  | Check your `<link>` to `index.css` in the `<head>` section     |
+| ❌ Nothing happens when pressing keys   | Make sure `index.js` is linked _after_ the HTML, at the bottom |
+| ❌ Snake or apple don’t appear later on | Open the console and check for typos or JavaScript errors      |
 
-<br>
-<br>
-<br>
-<br>
+---
+
+### ✅ **Check Your Work!**
+
+- Open your page in the browser and then open the **Console** (right-click → Inspect → Console).
+- You should see **no jQuery-related errors**.
+- If you see something like `"$ is not defined"`:
+  - Confirm that `jquery.min.js` is linked correctly _before_ your `index.js`
+  - Double-check for typos in the script tag paths
+
+<br><br><br><br>
 
 # Part 2 - Modeling Data & jQuery
 
 ## TODO 4: Modeling the Snake and Apple with Arrays and Objects
 
-The first step in designing a piece of software is deciding on how to model the various components of the program.
+## **TODO 4-1: Create the Apple**
 
-At the top of the `index.js` file is a setup section. All variables that your program will need should be declared there. By declaring them at the top of the program, we can easily see what data will be important to keep track of for the code to follow.
+🎯 **Goal:** Create the apple object, place it on the board, and give it a random position.
 
-- **4a)** Declare `snake` and `apple` variables as empty Objects in the `index.js` file just below the `"Game Variables"` comment. Also declare a `score` variable and give it the initial value of `0` at this same location.
+---
 
-  **Find line 13 in `index.js` where you see `// TODO 4a: Create the snake, apple and score variables` and add these lines directly below it:**
+### Step-by-Step Instructions
 
-  ```js
-  var snake = {};
-  var apple = {};
-  var score = 0;
-  ```
+1. **Declare an empty `apple` object** near the top of your `index.js` file.
 
-  > **Why Objects?** We use Objects (`{}`) for `snake` and `apple` because they need to store multiple related properties (like position, direction, etc.). This keeps our data organized and easy to access.
-  >
-  > **Coming up:** In TODO 4b and 4c, you'll give these empty objects their properties and functionality!
+   🔍 Search for the section labeled `"Game Variables"` and add:
 
-### TODO 4-1) **The Apple**
+   ```js
+   var apple = {};
+   ```
 
-Modeling the Apple is quite easy. It will need the following properties:
+2. **Create the `makeApple()` function** in the **helper functions** section. This function creates the apple element and gives it a random location on the board.
 
-- `apple.element`: A reference to the HTML element that represents the Apple.
-- `apple.row`: A reference to the row where the Apple currently exists.
-- `apple.column`: A reference to the column where the Apple currently exists.
+   Paste the following inside the function body:
 
-The `apple.element` Object will be needed in order to make any modifications to the Apple's HTML element using **jQuery**. The `apple.row` and `apple.column` properties will be useful for determining when the Snake collides with the Apple.
+   ```js
+   /* Create an HTML element for the apple using jQuery. Then find a random
+    * position on the board that is not occupied and position the apple there.
+    */
+   function makeApple() {
+     // make the apple jQuery Object and append it to the board
+     apple.element = $("<div>").addClass("apple").appendTo(board);
 
-> - **4b)** Let's go ahead and create the apple right now. To do so, do the following two tasks:
->
->   **1.** Copy the below function into your program down in the helper functions section. The `makeApple()` function already exists, so you just need to fill in the code block for the function:
->
->   ```js
->   /* Create an HTML element for the apple using jQuery. Then find a random
->    * position on the board that is not occupied and position the apple there.
->    */
->   function makeApple() {
->     // make the apple jQuery Object and append it to the board
->     apple.element = $("<div>").addClass("apple").appendTo(board);
->
->     // get a random available row/column on the board
->     var randomPosition = getRandomAvailablePosition();
->
->     // initialize the row/column properties on the Apple Object
->     apple.row = randomPosition.row;
->     apple.column = randomPosition.column;
->
->     // position the apple on the screen
->     repositionSquare(apple);
->   }
->   ```
->
->   If you take a look at the definition of the `makeApple` function you'll see that it finds a random position for the apple by calling the function `getRandomAvailablePosition()`. We'll get to that much later.
->
->   **2.** Up in the `init()` function at TODO 4b-2, call the `makeApple()` function.
+     // get a random available row/column on the board
+     var randomPosition = getRandomAvailablePosition();
 
-<hr>
+     // initialize the row/column properties on the Apple Object
+     apple.row = randomPosition.row;
+     apple.column = randomPosition.column;
 
-<br>
-<br>
-<br>
-<br>
+     // position the apple on the screen
+     repositionSquare(apple);
+   }
+   ```
 
-  <h3 align="center"><b>✅ CHECKPOINT: Apple Appears</b></h3>
-  <p align="center"><b>You should see:</b></p>
-  <p align="center">• A small red square somewhere on your game board</p>
-  <p align="center">• The red square should be randomly positioned</p>
-  <p align="center">• If you refresh the page, the apple might appear in a different spot</p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOU SEE THE RED SQUARE</b></p>
+3. **Call the `makeApple()` function** inside the `init()` function where TODO 4b-2 is noted.
 
-<br>
-<br>
-<br>
-<br>
+---
 
-### TODO 4-2) **The Snake and `snakeSquares`**
+### 💡 Why This Works
 
-Modeling the snake will be a bit trickier. Since the snake occupies multiple rows and columns, we will need multiple Objects to represent each part of the Snake.
+You’re using jQuery to create a new `<div>` with the class `apple`, then randomly placing it on the board. This makes the apple appear visually _and_ stores its location in code so you can detect when the snake reaches it.
+
+The helper function `getRandomAvailablePosition()` handles the logic to avoid putting the apple on top of the snake — we'll improve it later in the project.
+
+---
+
+### ✅ **Check Your Work!**
+
+- A small red square (the apple) should now appear somewhere on your game board.
+- Refreshing the page should place the apple in a new random spot.
+- If nothing appears:
+  - Check your `makeApple()` function for typos
+  - Confirm the function is being called in `init()`
+  - Make sure the apple has the correct CSS class (`apple`)
+
+<br><br><br><br>
+
+## **TODO 4-2: Create the Snake**
+
+🎯 **Goal:** Initialize the snake object and display its first segment (the head) on the board.
+
+---
+
+### Step-by-Step Instructions
+
+1. **Declare an empty `snake` object** in the `"Game Variables"` section at the top of your `index.js` file:
+
+   ```js
+   var snake = {};
+   ```
+
+2. **Create the `makeSnakeSquare(row, column)` function** in the **helper functions** section. This function builds one segment of the snake and places it on the board.
+
+   Fill in the function like this:
+
+   ```js
+   function makeSnakeSquare(row, column) {
+     // initialize a new snakeSquare Object
+     var snakeSquare = {};
+
+     // make the snakeSquare element and add it to the board
+     snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
+
+     // assign the row and column position
+     snakeSquare.row = row;
+     snakeSquare.column = column;
+
+     // set the snake’s position visually
+     repositionSquare(snakeSquare);
+
+     // if this is the head, give it a unique ID
+     if (snake.body.length === 0) {
+       snakeSquare.element.attr("id", "snake-head");
+     }
+
+     // add the square to the snake’s body and update the tail
+     snake.body.push(snakeSquare);
+     snake.tail = snakeSquare;
+   }
+   ```
+
+   > 🧠 `makeSnakeSquare()` handles everything needed to create a new body piece, place it on the screen, and track its position in code.
+
+3. **Initialize the snake inside the `init()` function** (at TODO 4c-2):
+
+   ```js
+   snake.body = []; // Start with an empty body
+   makeSnakeSquare(10, 10); // Create the first square in the middle of the board
+   makeSnakeSquare(10, 9); // Create a second square to the left of the first
+   makeSnakeSquare(10, 8); // Create a third square to the left of the second
+   snake.head = snake.body[0]; // Mark the first segment as the head
+   ```
+
+---
 
 <br>
 <h3 align="center">PLEASE CLICK THE ARROW BELOW AND READ HOW THE SNAKE IS MODELED</h3>
@@ -297,7 +368,6 @@ Modeling the snake will be a bit trickier. Since the snake occupies multiple row
 >
 > We can refer to each part of the snake as a `snakeSquare` Object which will have the following properties:
 >
-> - `snakeSquare.element`: A reference to the HTML element that represents a part of the snake.
 > - `snakeSquare.row`: A reference to the row where the `snakeSquare` currently exists.
 > - `snakeSquare.column`: A reference to the column where the `snakeSquare` currently exists.
 > - `snakeSquare.direction`: A reference to the direction that this particular `snakeSquare` is currently moving in.
@@ -307,131 +377,86 @@ Modeling the snake will be a bit trickier. Since the snake occupies multiple row
 > This data will be stored in the `snake` Object:
 >
 > - `snake.body`: An Array containing all `snakeSquare` Objects.
-> - `snake.head`: Reference to the jQuery `snakeSquare` Object at the head of the snake. Duplicate of `snake.body[0]`
-> - `snake.tail`: Reference to the jQuery `snakeSquare` Object at the end of the snake. Duplicate of `snake.body[snake.body.length - 1]`
+> - `snake.head`: Reference to the jQuery `snakeSquare` Object at the head of the snake. The same as `snake.body[0]` but easier to read.
+> - `snake.tail`: Reference to the jQuery `snakeSquare` Object at the end of the snake. The same as `snake.body[snake.body.length - 1]` but easier to read.
 >
 > Most of this will be handled automatically, but first you'll have to create and call the functions that do that.
 >
 > </details>
 
-<br>
-<br>
+---
 
-> - **4c)** Let's initialize the snake for the beginning of the program. To do so, do the following two tasks:
->
->   **1.** Copy the below function into your program down in the helper functions section. The `makeSnakeSquare()` function already exists, so you just need to fill in the code block for the function:
->
->   ```js
->   function makeSnakeSquare(row, column) {
->     // initialize a new snakeSquare Object
->     var snakeSquare = {};
->
->     // make the snakeSquare.element Object and append it to the board
->     snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
->
->     // initialize the row and column properties on the snakeSquare Object
->     snakeSquare.row = row;
->     snakeSquare.column = column;
->
->     // set the position of the snake on the screen
->     repositionSquare(snakeSquare);
->
->     // if this is the head, add the snake-head id
->     if (snake.body.length === 0) {
->       snakeSquare.element.attr("id", "snake-head");
->     }
->
->     // add snakeSquare to the end of the body Array and set it as the new tail
->     snake.body.push(snakeSquare);
->     snake.tail = snakeSquare;
->   }
->   ```
->
->   **IMPORTANT:** Take note of two lines in particular:
->
->   - `snakeSquare.element = $('<div>').addClass('snake').appendTo(board);` creates a new `<div>` element using jQuery and adds it to the board. Notice how we have `$(<div>)` written instead of `$(div)`. This is an important distinction to make, as the `<>` tells jQuery to create a new element entirely.
->   - `repositionSquare(snakeSquare)` calls an already existing helper function; the function is located directly below the `makeSnakeSquare()` function, and its job is to basically draw the new squae at the correct location on your screen.
->
->   **2.** Put the following lines of code in the `init()` function at the TODO 4c-2 location:
->
->   ```js
->   // initialize the snake's body as an empty Array
->   snake.body = [];
->
->   // make the first snakeSquare and set it as the head
->   makeSnakeSquare(10, 10);
->   snake.head = snake.body[0];
->   ```
+### ✅ **Check Your Work!**
 
-<hr>
+- Three green squares should appear on the board — these are the body segments of your snake. The head is a darker green square.
+- If you refresh the page, they should appear in the same spot (head in row 10, column 10).
+- If nothing appears:
+  - Confirm that `makeSnakeSquare()` is being called in `init()` three times.
+  - Make sure the CSS class `snake` exists and has visible styles.
 
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br>
 
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Do you see a green square appearing on your board?</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOU SEE THE GREEN SQUARE</b></p>
+## **TODO 5: The `update` Function**
 
-<br>
-<br>
-<br>
-<br>
+🎯 **Goal:** Start the game's update cycle so the snake can move and the screen can refresh in real time.
 
-## TODO 5: The update function
+---
 
-Most videogames are essentially animations that are interactive. Animation can be easily achieved by rapidly making changes to the appearance of the visual components on our screen.
+### Step-by-Step Instructions
 
-One common method for doing this is by using a function called `setInterval()`. Let's go ahead and make use of that function, then we'll talk about what it's doing.
+1. **In your `init()` function**, find the comment labeled `// TODO 5a` and add the following line:
 
-- **5a)** Copy the following code into your `init()` function at the TODO 5a prompt:
+```js
+updateInterval = setInterval(update, 100);
+```
 
-  ```javascript
-  // start update interval
-  updateInterval = setInterval(update, 100);
-  ```
+> 🌀 This starts a **game loop** — a function that runs repeatedly on a timer. In this case, the `update()` function will run every 100 milliseconds (10 times per second).
 
-  > **Game Loop Concept:** Most games use a "game loop" - a function that runs continuously to:
-  > 1. Update game state (move objects, check collisions)
-  > 2. Redraw the screen with new positions
-  > 3. Repeat!
-  >
-  > `setInterval(update, 100)` creates our game loop by calling `update()` every 100 milliseconds (10 times per second). This creates smooth animation by rapidly updating positions.
-  >
-  > **Why 100ms?** This gives us 10 FPS (frames per second), which is fast enough for smooth Snake movement but slow enough that players can control it. Feel free to experiment with different values!
+2. **Find the `update()` function** in your code (it should already be declared), and fill in its body like this:
 
-Next, we need to make sure that the `update()` function actually has something to do. Otherwise it doesn't matter how often the `setInterval()` function calls `update()`, because nothing will happen if the `update()` function is empty.
-
-- **5b)** Copy the body of the `update()` function into your program. The `update()` function already exists, so find it and fill in its code block.
-
-  ```js
-  function update() {
+```js
+function update() {
+  if (started) {
     moveSnake();
-
-    if (hasHitWall() || hasCollidedWithSnake()) {
-      endGame();
-    }
-
-    if (hasCollidedWithApple()) {
-      handleAppleCollision();
-    }
   }
-  ```
 
-  On each tick of the timer we move the snake. We'll check if it has collided
-  with the wall, itself, or the apple.
+  if (hasHitWall() || hasCollidedWithSnake()) {
+    endGame();
+  }
 
-  If it collides with the Apple, handle that collision (this includes lengthening the snake, adding a new apple, and increasing the score).
+  if (hasCollidedWithApple()) {
+    handleAppleCollision();
+  }
+}
+```
 
-  If it collides with itself or the wall, end the game.
+---
 
-  As you can see, we are using a lot of functions to write out the logic. This
-  is a strategy to make the main logic of the program readable. We'll have to work on those functions in later TODOs.
+### 💡 What’s a Game Loop?
 
-<br>
-<h3 align="center">YOU DO NOT NEED TO OPEN LIVE SERVER FOR THIS TODO</h3>
-<br>
+Every frame of your game — just like in an animation — the following happens:
+
+1. The snake updates its position.
+2. The game checks for any collisions.
+3. The screen redraws based on new positions.
+
+The `setInterval()` function makes that happen repeatedly and smoothly, giving us a live game experience.
+
+---
+
+### ✅ **Check Your Work!**
+
+1. **Open your browser and use Live Server to preview your game.**
+2. Open the **Developer Tools Console** (Right-click → Inspect → Console).
+3. Inside the `update()` function, temporarily add this line at the top:
+
+```js
+console.log("updating...");
+```
+
+4. Refresh the browser. You should see “updating...” printed every 100 milliseconds — this means your game loop is working!
+
+5. **Once you've confirmed it works, delete the `console.log`** so your console doesn’t get flooded during gameplay.
 
 ---
 
@@ -442,91 +467,70 @@ Next, we need to make sure that the `update()` function actually has something t
 ✅ **Data Modeling**: Created Objects to represent the snake and apple with properties like position and direction  
 ✅ **Game Loop**: Set up `setInterval()` to create smooth animation by calling `update()` 10 times per second  
 ✅ **Visual Elements**: Used jQuery to create and position HTML elements for the snake and apple  
-✅ **Game State**: Established the basic structure for tracking score and game components  
+✅ **Game State**: Established the basic structure for tracking score and game components
 
 **What's working now:**
+
 - Apple appears randomly on the board
 - Snake head is visible and positioned correctly
 - Game loop is running (even though movement isn't implemented yet)
 
 **Coming up in Part 3:** You'll add movement, collision detection, and all the game logic that makes Snake actually playable!
 
----
+<br><br><br><br>
 
 # Part 3 - Completing the Game's Logic
 
-## TODO 6: Change the snake's direction
+## **TODO 6: Change the Snake's Direction**
 
-### Step 1) A Lesson on How Keyboard Input Works
+🎯 **Goal:** Detect keyboard input and update the snake's direction accordingly.
 
-Every game provides some way for the user to have control. In this game, we will be using the keyboard to control our snake.
+---
 
-The following code is already provided for you in the _Setup_ section of the program, so you don't need to write it yourself:
+### Step-by-Step Instructions
 
-> ```javascript
-> $("body").on("keydown", handleKeyDown);
-> ```
+1. **Find the `handleKeyDown(event)` function** in the **helper functions** section near the bottom of `index.js`.
 
-- **6a)** Find the `handleKeyDown` function in the _Helper Functions_ section towards the bottom. Then, plug the following two lines of code into the function's body:
+2. Inside the function, add the following lines:
 
-  ```js
-  activeKey = event.which;
-  console.log(activeKey);
-  ```
+```js
+activeKey = event.which;
+console.log(activeKey);
+```
 
-  What this code will do is save the key that has been pressed for processing later (in the `activeKey` variable), and it also prints the pressed key so that you can see in the console if the event is working.
-  
-  > **Connection:** This builds on the keyboard event listener we set up earlier: `$("body").on("keydown", handleKeyDown);` (line 37 in index.js)
+> ⌨️ This saves the key code of the last key pressed and logs it to the console so you can check if input is working correctly.
 
-### Step 2) Changing the Snake's Direction Based on Keyboard Input
+3. Open your game in the browser and press the arrow keys. In the console, you should see numbers like:
 
-With the `activeKey` variable saving the last pressed key, we can use that information to move our snake.
+   - `37` for Left
+   - `38` for Up
+   - `39` for Right
+   - `40` for Down
 
-Find the definition of the Function `checkForNewDirection` and you'll see the comment for `// TODO 6b`. We've started a solution for this function for you. You should see this code:
+4. **Find the function `checkForNewDirection()`**. This is where you’ll update the snake's movement based on which arrow key was pressed.
+
+5. Add this `if` statement to check for the LEFT arrow key:
 
 ```js
 if (activeKey === KEY.LEFT) {
   snake.head.direction = "left";
 }
-
-// console.log(snake.head.direction);
 ```
 
-**Uncomment the `console.log()`, save your code and refresh your game. Then open the console**
+6. Now it's your turn!  
+   👉 Using the pattern above, add `else if` statements to check for the other three keys: `KEY.RIGHT`, `KEY.UP`, and `KEY.DOWN`.  
+   Each one should set `snake.head.direction` to the matching direction string.
 
-Right now, if you were to press the left arrow you would see the direction `"left"` printed to the console over and over again. This is because this function is called every time the `moveSnake()` function is called which is called 10 times per second by the `update` function. Now, we need to add the logic to handle the other three directions.
+---
 
-- **6b)** Using the `activeKey` variable and the `KEY` Object (located in the "Constant Variables" section near the top of your program), program `snake.head.direction` to change according to the arrow key that is currently being pressed.
+### ✅ **Check Your Work!**
 
-  **Complete the if/else structure by adding the missing directions:**
-
-  ```js
-  if (activeKey === KEY.LEFT) {
-    snake.head.direction = "left";
-  } else if (activeKey === KEY.RIGHT) {
-    snake.head.direction = "right";
-  } else if (activeKey === KEY.UP) {
-    snake.head.direction = "up";
-  } else if (activeKey === KEY.DOWN) {
-    snake.head.direction = "down";
-  }
-  ```
-
-  > **Remember:** The KEY object maps arrow keys to their numeric codes (LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40). This makes our code more readable than using the raw numbers.
-
-  When you are finished, save your code, refresh your game, and try pressing the arrow keys. Make sure that all four directions work!
-
-<hr>
-
-<br>
-<br>
-<br>
-<br>
-
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER AND OPEN THE CONSOLE</b></h3>
-  <p align="center"><b>Do you see all four direction printing to the console?</b></p>
-  <p align="center"><b>If so, then comment out the console.log line.</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOU SEE ALL FOUR DIRECTIONS PRINTING AND HAVE SUBSEQUENTLY COMMENTED OUT THE CONSOLE.LOG</b></p>
+- Press any arrow key while your game is running.
+- You should see the direction change in the console (e.g. `"left"`, `"up"`, etc.).
+- If you see key codes but not directions:
+  - Make sure `checkForNewDirection()` is being called inside `moveSnake()`
+  - Double-check the `KEY` values and that `activeKey` is being updated
+- Once it’s working, **comment out the `console.log()`** line inside `handleKeyDown()` to keep your console clean.
 
 <br>
 
@@ -535,240 +539,183 @@ Right now, if you were to press the left arrow you would see the direction `"lef
 > **console.log() is your debugging superpower!** Here are smart ways to use it throughout this project:
 >
 > **Position Debugging:**
+>
 > ```js
 > console.log("Snake head at:", snake.head.row, snake.head.column);
 > console.log("Apple at:", apple.row, apple.column);
 > ```
 >
 > **Direction Debugging:**
+>
 > ```js
 > console.log("Snake direction:", snake.head.direction);
 > console.log("Active key pressed:", activeKey);
 > ```
 >
 > **Collision Debugging:**
+>
 > ```js
 > console.log("Hit wall?", hasHitWall());
 > console.log("Hit apple?", hasCollidedWithApple());
 > ```
 >
 > **Body Movement Debugging:**
+>
 > ```js
 > // In your loop, add:
-> console.log("Moving piece", i, "from", snakeSquare.row, snakeSquare.column, "to", nextRow, nextColumn);
+> console.log(
+>   "Moving piece",
+>   i,
+>   "from",
+>   snakeSquare.row,
+>   snakeSquare.column,
+>   "to",
+>   nextRow,
+>   nextColumn
+> );
 > ```
 >
 > **Pro Tip:** Add console.log statements when something isn't working, then remove them once it's fixed!
 
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br>
 
-## TODO 7: Make the head move
+## **TODO 7: Make the Head Move**
 
-Now that we can control the direction our Snake _should_ move in, we can actually start moving the snake. Find `// TODO 7` in the `moveSnake` function definition.
+🎯 **Goal:** Update the snake's head position on each frame based on its current direction.
 
-On each call to `update`, `moveSnake()` will be called. After the `checkForNewDirection()` function is called (which you just programmed in TODO 6), `snake.head.direction` will either be `"left"`, `"right"`, `"down"`, or `"down"`. Now, we will need to move the snake exactly 1 square in the direction that it is facing.
+---
 
-- **7a)** **Find the `moveSnake()` function and locate `// TODO 7`** (around line 95). Add these lines of code directly below the comment:
+### Step-by-Step Instructions
+
+1. **Find the `moveSnake()` function** and locate the comment `// TODO 7`.
+
+2. Add this `if` statement directly under the comment to handle movement to the left:
 
 ```js
 if (snake.head.direction === "left") {
   snake.head.column = snake.head.column - 1;
 }
-repositionSquare(snake.head);
 ```
 
-> **READ:** The `repositionSquare` function accepts a `snakeSquare` Object and positions it on the screen according to that `snakeSquare`'s `.row` and `.column` properties. So, before we can reposition the square, we need to change either the row or column it currently is in! If we subtract `1` from the _current_ `snake.head.column` value, our snake will move `1` square to the left. \*This works for one direction, but we need to do more work to handle the other directions.\*\*
+> 🧠 This decreases the column number by 1, moving the head one square to the left. (Remember: columns increase from left to right.)
 
-- **7b)** Add three more conditional statements to determine the snake head's next row and column position based on its current row, column, and direction; you need to handle the `"right"`, `"up"`, and `"down"` directions.\*\*
+3. Now it's your turn!  
+   👉 Add three more `else if` statements to move the head in the other directions:
+   - `"right"` should increase the column by 1
+   - `"up"` should decrease the row by 1
+   - `"down"` should increase the row by 1
 
-> **HINT:** The top row in the board is row `0` and row numbers increase as you move down. The left-most column in the board is column `0` and column numbers increase as you move to the right.
+> 🔁 Don’t forget: The `row` value increases as you go **down** the screen, and `column` increases as you go **right**.
 
-<hr>
+4. **Leave the call to `repositionSquare(snake.head);` at the end** so the snake head updates on screen.
 
-<br>
-<br>
-<br>
-<br>
+---
 
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Does your snake move in all four directions?</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOUR SNAKE CAN MOVE IN ALL FOUR DIRECTIONS</b></p>
+### ✅ **Check Your Work!**
 
-<br>
-<br>
-<br>
-<br>
+- Open your game in the browser and use the arrow keys to control the snake.
+- The snake should move **one square per update** in whichever direction you press.
+- If it only moves left:
+  - Check that your new `else if` blocks are inside `moveSnake()`
+  - Make sure `snake.head.direction` is spelled correctly in each condition
 
-## TODO 8: Check for collisions with the wall
+---
 
-Now that our snake can move freely, we need to put some constraints on it. We don't want our snake to leave the confines of the board (sorry snake).
+### 🐛 Debugging Tip: Logging Position
 
-The next step in our game's `update` logic is to check if the snake has either collided with the walls or with itself. Let's start with the walls.
-
-Find the function `hasHitWall()`.
-
-> **Collision Detection Concept:** In games, we need to constantly check if objects are overlapping or hitting boundaries. For our grid-based Snake game, collision detection means comparing positions:
-> - **Wall collision:** Is the snake's head outside the valid grid boundaries?
-> - **Self collision:** Does the head occupy the same position as any body part?
-> - **Apple collision:** Does the head share the same row/column as the apple?
-
-> - **8a)** Program the function to return `true` if the snake's head has collided with any of the four walls of the board and `false` otherwise.
->
->   **Think about boundaries:** Our grid has rows 0 to 19 and columns 0 to 19. The snake hits a wall when:
->   - It goes above row 0 (row becomes -1)
->   - It goes below row 19 (row becomes 20) 
->   - It goes left of column 0 (column becomes -1)
->   - It goes right of column 19 (column becomes 20)
->
->   Use the following pieces of data to determine if the snake's head has collided with one of the walls:
->
-> ```js
-> ROWS; // the total number of ROWS in the board (20)
-> COLUMNS; // the total number of COLUMNS in the board (20)
-> snake.head.row; // the current row of snake.head
-> snake.head.column; // the current column of snake.head
-> ```
-
-> **IMPORTANT:** Test your snake's movement before moving on. It should be able to get right up against all four walls, but not go past them without dying. If it can't reach the walls, or if it can go outside of the walls, then **adjust your conditions so that it can go anywhere within the box but nowhere outside of it. If you changed any width or height at any point, you may need to consult with your instructor.**
-
-<hr>
-
-<br>
-<br>
-<br>
-<br>
-
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Does your snake die when it hits the walls?</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOUR SNAKE DIES WHEN IT HITS THE WALLS</b></p>
-
-<br>
-<br>
-<br>
-<br>
-
-## TODO 9: Check for collisions with the apple
-
-Now that our `apple` has been added to the board, we need the snake to actually eat it!
-
-Within the `update` function we can see the logic for doing this:
-
-```javascript
-if (hasCollidedWithApple()) {
-  handleAppleCollision();
-}
-```
-
-If the snake `hasCollidedWithApple` then we can `handleAppleCollision`. Makes sense! Let's start with detecting collisions with the apple.
-
-Find the definition for the function `hasCollidedWithApple()`.
-
-> - **9a)** Make the function return `true` if the snake's head has collided with the apple and `false` otherwise.
->
->   Use the following pieces of data to determine if the snake's head has collided with the apple.
->
-> ```js
-> apple.row; // the current row of the apple
-> apple.column; // the current column of the apple
-> snake.head.row; // the current row of snake.head
-> snake.head.column; // the current column of snake.head
-> ```
-
-**Save your code, refresh your game, and observe the changes!** If you did this
-step properly then your snake should be able to eat the Apple.
-
-<hr>
-
-<br>
-<br>
-<br>
-<br>
-
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>The apple should disappear and reappear, and your score should increase. THE SNAKE SHOULD NOT GET LONGER YET</b></p>
-  <p align="center"><b>Do you see this behavior when the snake collides with the apple?</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOUR SNAKE CAN EAT THE APPLE</b></p>
-
-<br>
-<br>
-<br>
-<br>
-
-### TODO 10: Handle Apple Collisions
-
-You may notice that our apple eating behavior isn't perfect. Find the function
-`handleAppleCollision`. At this point, the apple and score are updated because the top of this function has the following logic:
+If your snake isn’t moving as expected, try this:
 
 ```js
-// increase the score and update the score DOM element
-score++;
-scoreElement.text("Score: " + score);
-
-// Remove existing Apple and create a new one
-apple.remove();
-makeApple();
+console.log("Head is at:", snake.head.row, snake.head.column);
+console.log("Direction:", snake.head.direction);
 ```
 
-However, the bottom only has the following code at this point:
+> Watch the console as you press arrow keys — you should see the direction update and the position change accordingly. If you don't, then check where those values are being set and updated in your code.
+
+<br><br><br><br>
+
+## **TODO 8: Check for Collisions with the Wall**
+
+🎯 **Goal:** End the game if the snake moves off the board.
+
+---
+
+### Step-by-Step Instructions
+
+1. **Find the `hasHitWall()` function**. This function should return `true` if the snake’s head is outside the bounds of the game board, and `false` otherwise.
+
+2. Inside the function, check whether the **head's row or column** is beyond the board limits:
+
+   - `snake.head.row` should be between `0` and `ROWS - 1`
+   - `snake.head.column` should be between `0` and `COLUMNS - 1`
+
+3. If either value is outside that range, return `true` to signal a collision.
+   Otherwise, return `false`.
+
+> 🧱 This function is used in the game loop to detect when the snake hits a wall — and if it does, the game ends using `endGame()`.
+
+---
+
+### 💡 How the Bounds Work
+
+- The board is a grid with a fixed number of rows (`ROWS`) and columns (`COLUMNS`).
+- If `snake.head.row` is less than 0 or greater than or equal to `ROWS`, the snake is off the top or bottom edge.
+- If `snake.head.column` is less than 0 or greater than or equal to `COLUMNS`, the snake is off the left or right edge.
+
+---
+
+### ✅ **Check Your Work!**
+
+- Run your game and drive the snake into all four walls.
+- The game should stop, and the snake should no longer move.
+- If the game _keeps going_:
+  - Make sure `hasHitWall()` returns `true` when the head is out of bounds
+  - Confirm that `hasHitWall()` is being called inside the `update()` function
+
+<br><br><br><br>
+
+## **TODO 9: Check for Collisions with the Apple**
+
+🎯 **Goal:** Detect when the snake’s head reaches the apple’s position.
+
+---
+
+### Step-by-Step Instructions
+
+1. **Find the `hasCollidedWithApple()` function**.
+
+2. Inside this function, compare the **head’s row and column** to the **apple’s row and column**.
+
+3. If both the row _and_ the column match, return `true`.  
+   Otherwise, return `false`.
+
+> 🍎 This tells the game when the snake has reached the apple so we can grow the snake and reposition the apple in the next step.
+
+---
+
+### ✅ **Check Your Work!**
+
+- Run your game and try to guide the snake toward the apple.
+- When the snake touches the apple, the apple should move to a new position and the score should increase.
+- If the apple doesn’t move:
+  - Make sure `hasCollidedWithApple()` is being called inside the `update()` function
+  - Check that the row and column comparisons are correct
+
+<br><br><br><br>
+
+## **TODO 10: Move the Body**
+
+🎯 **Goal:** Update each segment of the snake’s body so it follows the head.
+
+---
+
+### Step-by-Step Instructions
+
+1. **Find the `moveSnake()` function**, where the snake’s movement logic is happening.
+
+2. Just before moving the head, add this loop to update the rest of the body:
 
 ```js
-var row = 0;
-var column = 0;
-
-// code to determine the row and column of the snakeSquare to add to the snake
-
-makeSnakeSquare(row, column);
-```
-
-As we can see, right now we are creating a new snakeSquare at position (0, 0). It is your job to fix this.
-
-- **10a)** **Find the `handleAppleCollision()` function and locate the section starting with `var row = 0;`** (around line 142). Replace the `0` values to determine the `row` and `column` where the next snakeSquare should be placed so that it is added on to the tail of the snake.
-
-  **Use conditional statements with `snake.tail.direction` like this pattern:**
-  ```js
-  if (snake.tail.direction === "left") {
-    row = snake.tail.row;
-    column = snake.tail.column + 1; // Place the new piece to the RIGHT of the tail
-  }
-  // Add similar conditions for "right", "up", and "down"
-  ```
-
-  > **Logic:** If the tail is moving LEFT, the new piece should be placed to the RIGHT of it (one column higher). Apply this same "opposite direction" logic for all four directions.
-
-> **HINT:** If the snake's tail is moving right, the next snakeSquare should be one column to the left. If the column is moving up, the next snakeSquare should be one row below. Use this logic to figure out the location of the new piece for all four directions that the snake might be moving.
-
-> **NOTE:** Completing this TODO will not make your snake grow properly. It will simply create each new snakeSquare behind the snake's tail, but they won't follow it yet. Complete the next TODO to make your snake properly grow.
-
-<hr>
-
-<br>
-<br>
-<br>
-<br>
-
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Does your snake leave a square behind it when it eats the apple? The top corner doesn't count, and it will only be leaving behind one new square</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOUR SNAKE LEAVES BEHIND A NEW SQUARE THAT IS NOT AT THE TOP LEFT CORNER</b></p>
-
-<br>
-<br>
-<br>
-<br>
-
-## TODO 11: Move the body
-
-Find the function definition for `moveSnake()`.
-
-Our program is still not working properly. When our snake eats an apple, a new snakeSquare is added to the board in the correct location. However, each new snakeSquare does not follow the snake!
-
-> **Building on:** This completes the snake movement started in TODO 7 (head movement) and TODO 10 (adding body pieces).
-
-- **11a)** Add this code below the comment for `TODO: 11`:
-
-```javascript
 for ( /* code to loop through the indexes of the snake.body Array*/ ) {
     var snakeSquare = "???";
 
@@ -784,87 +731,135 @@ for ( /* code to loop through the indexes of the snake.body Array*/ ) {
 }
 ```
 
-<hr>
+> 🧠 You are making each square “chase” the one ahead of it — just like how a real snake’s body moves.
 
-**READ:** In order for the snake to follow the head, each snakeSquare must learn the position and direction of the snakeSquare that is in front of it. Since we want to apply this same logic to every snakeSquare in the `snake.body` Array, iteration using a `for` loop will be very helpful!
+3. Replace each `???` with the correct property name so the movement copies over correctly.
 
-- **11b)** Reposition each snakeSquare in the `snake.body` Array and update the direction for each snakeSquare.
+---
 
-> **Why Loop Backwards? (CRITICAL CONCEPT):** Imagine you have a 3-piece snake: Head → Body1 → Tail. If you loop forward:
-> 1. Body1 takes Head's position
-> 2. Tail tries to take Body1's position, but Body1 now has Head's position!
-> 
-> If you loop backwards:
-> 1. Tail takes Body1's original position  
-> 2. Body1 takes Head's original position
-> 3. Each piece gets the correct "previous" position
->
-> **This is why backwards iteration is ESSENTIAL - it preserves the data each piece needs!**
+### 💡 Why Loop Backwards?
 
-> **Hint 1:** Start your loop from the last index (`snake.body.length - 1`) and work backwards to index `1` (skip index `0` since that's the head).
+When moving the body, you need to loop **backward** through the `snake.body` array. This is because each segment needs to take the position of the segment in front of it. If you loop forward, you’ll overwrite positions before they can be used!
 
-> **Hint 2:** For any snakeSquare at index `i`, the snakeSquare in front of it is at index `i - 1`.
+Below are two images. The first shows the snake movement with correct backward looping, and the second shows what happens if you loop forward. Notice how the snake seems to shrink in the incorrect version!
 
-> **HINT 3:** Your loop should look something like:
-> ```js
-> for (var i = snake.body.length - 1; i > 0; i--) {
->   // Your code here
-> }
-> ```
+<h3 align="center">Correct Backward Looping</h3>
 
-<hr>
+<p align="center">
+  <img src="https://github.com/OperationSpark/images/blob/master/hs-curriculum/asd-projects/snake/snakeGoodMovement.gif?raw=true" alt="Correct Backward Looping" />
+</p>
 
-<br>
-<br>
-<br>
-<br>
+<h3 align="center">Incorrect Forward Looping</h3>
 
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Does the body now follow the snake properly?</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOUR SNAKE'S BODY FOLLOWS THE HEAD PROPERLY</b></p>
+<p align="center">
+  <img src="https://github.com/OperationSpark/images/blob/master/hs-curriculum/asd-projects/snake/snakeBadMovement.gif?raw=true" alt="Incorrect Forward Looping" />
+</p>
 
-<br>
-<br>
-<br>
-<br>
+---
 
-## TODO 12: Check for snake collisions with itself
+### ✅ **Check Your Work!**
 
-After eating a few apples your snake will be long enough to potentially run into its own body! Try doing this and you'll notice that your snake will just breeze right through. This is not what you want.
+- Run your game and press arrow keys to move.
+- You should see:
+  - The snake’s head moves one square in the chosen direction
+  - The body segments follow the exact path of the head
+- If the snake “breaks apart” or overlaps weirdly:
+  - Double-check that you're looping _backward_
+  - Make sure you're updating the `.row`, `.column`, and `.direction` correctly
 
-According to our logic in the `update()` function, when this happens, the game is supposed to end! We need to fill out the `hasCollidedWithSnake()` function so that it properly detects this collision.
+<br><br><br><br>
 
-Find the `hasCollidedWithSnake()` function.
+## **TODO 11: Handle Apple Collisions**
 
-- **12a)** Make this function return `true` if the `snake.head` has overlapped with **_any_** snakeSquare in `snake.body`.
+🎯 **Goal:** Add a new snake segment in the correct position after eating an apple.
 
-  What data will you need to use to solve this problem?
+---
 
-  > **Hint:** Remember that the snake's head is the first entry in `snake.body` so make sure that you aren't comparing `snake.head` with `snake.body[0]`!
+### Step-by-Step Instructions
 
-<hr>
+1. **Find the `handleAppleCollision()` function.**  
+   Scroll down until you find the line starting with `var row = snake.tail.row;` — that’s your starting point.
 
-<br>
-<br>
-<br>
-<br>
+2. Replace the default `0` values with logic that calculates the correct `row` and `column` based on the **tail's current direction**.
 
-  <h3 align="center"><b>CHECK YOUR LIVE SERVER</b></h3>
-  <p align="center"><b>Does your game end when the snake runs into itself?</b></p>
-  <p align="center"><b>DO NOT MOVE FORWARD UNTIL YOUR GAME ENDS WHEN THE SNAKE RUNS INTO ITSELF</b></p>
+   Use conditionals like this:
 
-<br>
-<br>
-<br>
-<br>
+```js
+if (snake.tail.direction === "left") {
+  column++; // Place the new piece to the RIGHT of the tail
+}
+// Add similar checks for "right", "up", and "down"
+```
 
-## TODO 13: Make sure our Apple is placed only in available positions
+> 🧠 You’re placing the new segment _behind_ the tail — so think in the opposite direction of where the tail is moving, and think if it is moving across rows or columns.
 
-The final problem is to make sure that when our apple is regenerated, it is positioned in a square on our screen that is actually available, and not accidentally on top of a piece of snake.
+3. After calculating the new coordinates, the code should already call `makeSnakeSquare(row, column);` for you.
 
-Find the function `getRandomAvailablePosition()`.
+---
 
-Currently, this is its logic:
+### ✅ **Check Your Work!**
+
+- Run your game and move the snake into an apple.
+- You should see:
+  - A new green segment appear right behind the tail
+  - The apple jump to a new position
+- If you still see a piece appear at (0, 0):
+  - Double-check that your logic is actually changing the `row` and `column`
+  - Confirm that `snake.tail.direction` is correct and has all four conditionals
+
+<br><br><br><br>
+
+## **TODO 12: Check for snake collisions with itself**
+
+🎯 **Goal:** End the game if the snake runs into its own body.
+
+---
+
+### Step-by-Step Instructions
+
+1. **Find the `hasCollidedWithSnake()` function.**
+
+2. Inside this function, loop through all the squares in `snake.body` **except the head** (which is at index `0`).
+
+3. If the **head’s row and column** match any other square’s row and column, return `true`.  
+   Otherwise, return `false`.
+
+> 🧠 This check tells us if the head has “crashed” into the body — if so, the game will end via the `update()` loop.
+
+---
+
+### 💡 Helpful Tips
+
+- You’ll need to compare each square’s `.row` and `.column` with `snake.head.row` and `snake.head.column`.
+- Be sure to **skip index 0**, since that’s the head itself — you don’t want to compare it to itself!
+
+---
+
+### ✅ **Check Your Work!**
+
+- Run your game and eat a few apples to grow the snake.
+- Try turning the snake into its own body.
+- You should see:
+  - The game immediately ends
+  - The snake stops moving
+  - The “Game Over” message appears
+- If the game doesn’t end:
+  - Make sure you’re looping through `snake.body` starting at index `1`
+  - Check that you’re comparing both the `row` and `column`
+
+<br><br><br><br>
+
+## **TODO 13: Make sure our Apple is placed only in available positions**
+
+🎯 **Goal:** Make sure the apple never spawns on top of the snake.
+
+---
+
+### Step-by-Step Instructions
+
+1. **Find the `getRandomAvailablePosition()` function.**
+
+2. You’ll see this basic structure:
 
 ```js
 var spaceIsAvailable;
@@ -879,33 +874,108 @@ while (!spaceIsAvailable) {
 return randomPosition;
 ```
 
-**READ:** Notice that `spaceIsAvailable` needs to be `false` for the while loop to run, and part of what the loop does is set it to be `true` every time. As such, the program makes a single guess for where to put the apple and calls it a day.
+3. Your job is to **add a check inside the `while` loop** to make sure that `randomPosition` is not already occupied by the snake.
 
-You won't want to change that, but you'll need to use conditionals to set the value to `false` if the apple ends up on top of the snake, as that will make the loop try placing the apple again.
+   > 🍎 If it _is_ on the snake, set `spaceIsAvailable = false;` so the loop tries again.
 
-- **13a)** Modify the code block in the `while` loop so that if the randomly generated position is occupied by any part of the snake's body, it loops again.
+---
 
-  > **HINT 1:** You need to make sure that the apple doesn't appear on _any_ piece of your snake. How did you check for collisions between the head and the body? A similar approach would be fitting here, but with two differences.
-  >
-  > 1.  You should be comparing the `randomPosition` to the snake pieces instead of the head.
-  > 2.  This check _should_ check the entire snake and not ignore the head.
+### 💡 Hints and Strategy
 
-  > **HINT 2:** If the first hint wasn't enough, you need to use iteration _within_ the `while` loop. You are more than allowed to put a `for` loop inside of a `while` loop if you want to, and you can put a conditional statement inside of that as well if needed.
+- Use a `for` loop inside the `while` loop to check each square in `snake.body`.
+- Compare each body square’s `row` and `column` with the `randomPosition` object's `row` and `column`.
+- If both match for any snake square, that means the spot is taken — set `spaceIsAvailable = false;`
 
-<br>
-<br>
+> 🧠 This is similar to how you checked for head collisions — but now you're comparing the apple’s spot against **every part** of the snake (including the head).
 
-  <h3 align="center"><b>CHECK WITH YOUR INSTRUCTOR UPON COMPLETING THIS STEP</b></h3>
-  <p align="center"><b>It is very difficult to test this TODO without setting up the game with a large snake beforehand, or else playing for a long time. As such, let your instructor check your code for errors before concluding the project</b></p>
+---
 
-<br>
-<br>
+### ✅ **Check With Your Instructor**
 
-# Submit Your Work
+This step is tricky to test unless the snake is already large or you’ve played for a long time.
 
-Submit your work regularly. Because these files are already being tracked by your GitHub repo, you can skip the "git add" step. Instead, enter the following commands:
+📣 **Before moving on, ask your instructor to review your logic.**  
+Make sure your loop checks **every piece** of the snake and correctly handles collisions.
 
-> git commit -a -m "finished snake game"
-> git push
+> Pro tip: Once you’ve finished, try logging potential collisions in the console to confirm they’re being caught.
 
-Congratulations on finishing the Snake game! You've built a fully functional game from scratch using HTML, CSS, and JavaScript. You've also learned how to use jQuery to manipulate HTML elements and how to organize your code using functions.
+<br><br><br><br>
+
+# 🌟 Extra Challenges
+
+## 🌈 Challenge: Rainbow Snake
+
+What if your snake changed color each time it grew?
+
+In this challenge, you’ll make your snake cycle through a set of colors — red, orange, yellow, green, blue, and purple — one square at a time. Each new segment should appear in the next color, and then the pattern repeats.
+
+This will turn your snake into a moving rainbow!
+
+---
+
+### 🔧 What to Do
+
+- Create a list (array) called `colors`:
+
+```js
+["red", "orange", "yellow", "green", "blue", "purple"];
+```
+
+- Add a new variable (like `colorIndex`) to track which color comes next
+- After you call `makeSnakeSquare()`, immediately apply the background color using:
+
+```js
+snake.tail.element.css("backgroundColor", colors[colorIndex]);
+```
+
+- After each new square is created, increase `colorIndex`. If it goes past the end of the list, loop it back to 0.
+
+<br><br>
+
+## 🔁 Challenge: Reverse Controls Every 10 Points
+
+Let’s make things a bit more interesting.
+
+In this challenge, your snake will start with normal movement — but once your score hits a multiple of 10, the controls will flip:
+
+- Up becomes down
+- Left becomes right
+- Chaos becomes your new best friend
+
+The controls should continue to swap every time the score passes another multiple of 10.
+
+---
+
+### 🔧 What to Do
+
+- Track the current score using the existing score variable
+- Add a new boolean variable called `isReversed` and set it to `false` initially
+- Inside of the `handleAppleCollision()` function, check if the score is a multiple of 10:
+  - If it is, toggle `isReversed` to its opposite value
+- Update the `handleKeyDown()` function to account for the `isReversed` state
+  - If `isReversed` is `true`, reverse the direction logic
+  - If `isReversed` is `false`, use the normal direction logic
+
+---
+
+## 🚀 Push Your Work
+
+When you're completely finished:
+
+1. Save all your files
+2. Open your terminal
+3. Add, commit, and push your code:
+
+```bash
+git add .
+git commit -m "Completed Snake game"
+git push
+```
+
+✅ Confirm that your changes are visible on GitHub.
+
+> 🧠 Reminder: Always write clear commit messages so your collaborators (and future you!) know what changed.
+
+🎉 Congratulations on finishing the Snake game! 🎉
+
+You've built a fully functional game from scratch using HTML, CSS, and JavaScript. You've also learned how to use jQuery to manipulate HTML elements and how to organize your code using functions.
