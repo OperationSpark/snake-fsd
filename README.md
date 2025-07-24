@@ -27,13 +27,13 @@ Along the way, you’ll practice essential programming skills like keyboard inpu
   - [TODO 2: Add CSS](#todo-2-add-css)
   - [TODO 3: Add JavaScript](#todo-3-add-javascript)
 - [Part 2 - Modeling Data & jQuery](#part-2---modeling-data--jquery)
-  - [TODO 4a: Create the Apple](#todo-4a-create-the-apple)
-  - [TODO 4b: Create the Snake](#todo-4b-create-the-snake)
-  - [TODO 5: The `update` Function](#todo-5-the-update-function)
+  - [TODO 4: Create the Apple](#todo-4-create-the-apple)
+  - [TODO 5: Create the Snake](#todo-5-create-the-snake)
+  - [TODO 6: The `update` Function](#todo-6-the-update-function)
 - [Part 3 - Completing the Game's Logic](#part-3---completing-the-games-logic)
-  - [TODO 6: Change the snake's direction](#todo-6-change-the-snakes-direction)
-  - [TODO 7: Make the head move](#todo-7-make-the-head-move)
-  - [TODO 8: Check for collisions with the wall](#todo-8-check-for-collisions-with-the-wall)
+  - [TODO 7: Change the snake's direction](#todo-7-change-the-snakes-direction)
+  - [TODO 8: Make the head move](#todo-8-make-the-head-move)
+  - [TODO 9: Check for collisions with the wall](#todo-9-check-for-collisions-with-the-wall)
   - [TODO 9: Check for collisions with the apple](#todo-9-check-for-collisions-with-the-apple)
   - [TODO 10: Move the body](#todo-10-move-the-body)
   - [TODO 11: Handle Apple Collisions](#todo-11-handle-apple-collisions)
@@ -79,13 +79,13 @@ Your project is graded based on completion of each major step. Make sure each TO
 | Section / TODO | Description                                   | Points |
 | -------------- | --------------------------------------------- | ------ |
 | **Part 1**     | Set up HTML, CSS, and JavaScript              | 7      |
-| **TODO 4a**     | Create the apple                                | 4      |
-| **TODO 4b**     | Create the snake                                | 4      |
-| **TODO 5**     | Create and configure the game loop            | 5      |
-| **TODO 6**     | Handle keyboard input and set direction       | 10     |
-| **TODO 7**     | Move the snake’s head based on direction      | 10     |
-| **TODO 8**     | Detect wall collisions                        | 10     |
-| **TODO 9**     | Detect apple collisions                       | 10     |
+| **TODO 4**     | Create the apple                                | 4      |
+| **TODO 5**     | Create the snake                                | 4      |
+| **TODO 6**     | Create and configure the game loop            | 5      |
+| **TODO 7**     | Handle keyboard input and set direction       | 10     |
+| **TODO 8**     | Move the snake’s head based on direction      | 10     |
+| **TODO 9**     | Detect wall collisions                        | 10     |
+| **TODO 10**     | Detect apple collisions                       | 10     |
 | **TODO 10**    | Add new snake segment on apple collision      | 10     |
 | **TODO 11**    | Make the snake’s body follow the head         | 10     |
 | **TODO 12**    | Detect collisions with the snake itself       | 10     |
@@ -241,7 +241,7 @@ If your game isn’t working as expected, check these common problems:
 
 ## TODO 4: Modeling the Snake and Apple with Arrays and Objects
 
-## **TODO 4a: Create the Apple (🍎)**
+## **TODO 4: Create the Apple (🍎)**
 
 🎯 **Goal:** Show an apple on a random empty square.
 
@@ -253,7 +253,7 @@ If your game isn’t working as expected, check these common problems:
    - Finds a free spot using `getRandomAvailablePosition()`.
    - Stores that row / column on the `apple` object.
    - Calls `repositionSquare(apple)` to move it on screen.
-3. In `init()` (look for `// TODO 4a-2`) call `makeApple();`.
+3. In `init()` (look for `// TODO 4-2`) call `makeApple();`.
 
 ---
 
@@ -293,7 +293,7 @@ If your game isn’t working as expected, check these common problems:
    }
    ```
 
-3. **Call the `makeApple()` function** inside the `init()` function where TODO 4a-2 is noted.
+3. **Call the `makeApple()` function** inside the `init()` function where TODO 4-2 is noted.
 
 ---
 
@@ -316,18 +316,18 @@ The helper function `getRandomAvailablePosition()` handles the logic to avoid pu
 
 <br><br><br><br>
 
-## **TODO 4b: Create the Snake (🐍)**
+## **TODO 5: Create the Snake (🐍)**
 
 🎯 **Goal:** Build the starting snake on the board.
 
 ### Quick Steps
 
-1. Near the top of `index.js` add `var snake = {};`.
+1. Near the top of `index.js` add `const snake = {};`.
 2. Create a helper `makeSnakeSquare(row, column)` that:
    - Builds a `<div>` with class `snake` and positions it using `repositionSquare()`.
    - Pushes the square into `snake.body` and updates `snake.tail`.
    - Gives the first square the id `snake-head`.
-3. Inside `init()` (look for `// TODO 4b-2`) set up the first three squares:
+3. Inside `init()` (look for `// TODO 5-2`) set up the first three squares:
 
 ```js
 snake.body = [];
@@ -348,7 +348,7 @@ Check: You should see a three-square snake in the middle of the board.
 1. **Declare an empty `snake` object** in the `"Game Variables"` section at the top of your `index.js` file:
 
    ```js
-   var snake = {};
+const snake = {};
    ```
 
 2. **Create the `makeSnakeSquare(row, column)` function** in the **helper functions** section. This function builds one segment of the snake and places it on the board.
@@ -358,7 +358,7 @@ Check: You should see a three-square snake in the middle of the board.
    ```js
    function makeSnakeSquare(row, column) {
      // initialize a new snakeSquare Object
-     var snakeSquare = {};
+     const snakeSquare = {};
 
      // make the snakeSquare element and add it to the board
      snakeSquare.element = $("<div>").addClass("snake").appendTo(board);
@@ -383,7 +383,7 @@ Check: You should see a three-square snake in the middle of the board.
 
    > 🧠 `makeSnakeSquare()` handles everything needed to create a new body piece, place it on the screen, and track its position in code.
 
-3. **Initialize the snake inside the `init()` function** (at TODO 4b-2):
+3. **Initialize the snake inside the `init()` function** (at TODO 5-2):
 
    ```js
    snake.body = []; // Start with an empty body
