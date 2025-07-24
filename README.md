@@ -27,7 +27,8 @@ Along the way, you’ll practice essential programming skills like keyboard inpu
   - [TODO 2: Add CSS](#todo-2-add-css)
   - [TODO 3: Add JavaScript](#todo-3-add-javascript)
 - [Part 2 - Modeling Data & jQuery](#part-2---modeling-data--jquery)
-  - [TODO 4: Modeling the Snake and Apple with Arrays and Objects](#todo-4-modeling-the-snake-and-apple-with-arrays-and-objects)
+  - [TODO 4a: Create the Apple](#todo-4a-create-the-apple)
+  - [TODO 4b: Create the Snake](#todo-4b-create-the-snake)
   - [TODO 5: The `update` Function](#todo-5-the-update-function)
 - [Part 3 - Completing the Game's Logic](#part-3---completing-the-games-logic)
   - [TODO 6: Change the snake's direction](#todo-6-change-the-snakes-direction)
@@ -78,7 +79,8 @@ Your project is graded based on completion of each major step. Make sure each TO
 | Section / TODO | Description                                   | Points |
 | -------------- | --------------------------------------------- | ------ |
 | **Part 1**     | Set up HTML, CSS, and JavaScript              | 7      |
-| **TODO 4**     | Model the snake and apple with objects/arrays | 8      |
+| **TODO 4a**     | Create the apple                                | 4      |
+| **TODO 4b**     | Create the snake                                | 4      |
 | **TODO 5**     | Create and configure the game loop            | 5      |
 | **TODO 6**     | Handle keyboard input and set direction       | 10     |
 | **TODO 7**     | Move the snake’s head based on direction      | 10     |
@@ -239,9 +241,21 @@ If your game isn’t working as expected, check these common problems:
 
 ## TODO 4: Modeling the Snake and Apple with Arrays and Objects
 
-## **TODO 4-1: Create the Apple**
+## **TODO 4a: Create the Apple (🍎)**
 
-🎯 **Goal:** Create the apple object, place it on the board, and give it a random position.
+🎯 **Goal:** Show an apple on a random empty square.
+
+### Quick Steps
+
+1. Add `const apple = {};` at the top of `index.js` (inside **Game Variables**).
+2. Write a helper `makeApple()` that:
+   - Builds a new `<div>` with class `apple` and adds it to `#board`.
+   - Finds a free spot using `getRandomAvailablePosition()`.
+   - Stores that row / column on the `apple` object.
+   - Calls `repositionSquare(apple)` to move it on screen.
+3. In `init()` (look for `// TODO 4a-2`) call `makeApple();`.
+
+---
 
 ---
 
@@ -279,7 +293,7 @@ If your game isn’t working as expected, check these common problems:
    }
    ```
 
-3. **Call the `makeApple()` function** inside the `init()` function where TODO 4b-2 is noted.
+3. **Call the `makeApple()` function** inside the `init()` function where TODO 4a-2 is noted.
 
 ---
 
@@ -302,9 +316,30 @@ The helper function `getRandomAvailablePosition()` handles the logic to avoid pu
 
 <br><br><br><br>
 
-## **TODO 4-2: Create the Snake**
+## **TODO 4b: Create the Snake (🐍)**
 
-🎯 **Goal:** Initialize the snake object and display its first segment (the head) on the board.
+🎯 **Goal:** Build the starting snake on the board.
+
+### Quick Steps
+
+1. Near the top of `index.js` add `var snake = {};`.
+2. Create a helper `makeSnakeSquare(row, column)` that:
+   - Builds a `<div>` with class `snake` and positions it using `repositionSquare()`.
+   - Pushes the square into `snake.body` and updates `snake.tail`.
+   - Gives the first square the id `snake-head`.
+3. Inside `init()` (look for `// TODO 4b-2`) set up the first three squares:
+
+```js
+snake.body = [];
+makeSnakeSquare(10,10);
+makeSnakeSquare(10,9);
+makeSnakeSquare(10,8);
+snake.head = snake.body[0];
+```
+
+Check: You should see a three-square snake in the middle of the board.
+
+---
 
 ---
 
@@ -348,7 +383,7 @@ The helper function `getRandomAvailablePosition()` handles the logic to avoid pu
 
    > 🧠 `makeSnakeSquare()` handles everything needed to create a new body piece, place it on the screen, and track its position in code.
 
-3. **Initialize the snake inside the `init()` function** (at TODO 4c-2):
+3. **Initialize the snake inside the `init()` function** (at TODO 4b-2):
 
    ```js
    snake.body = []; // Start with an empty body
