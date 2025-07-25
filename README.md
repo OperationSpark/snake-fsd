@@ -34,11 +34,11 @@ Along the way, you’ll practice essential programming skills like keyboard inpu
   - [TODO 7: Change the snake's direction](#todo-7-change-the-snakes-direction)
   - [TODO 8: Make the head move](#todo-8-make-the-head-move)
   - [TODO 9: Check for collisions with the wall](#todo-9-check-for-collisions-with-the-wall)
-  - [TODO 9: Check for collisions with the apple](#todo-9-check-for-collisions-with-the-apple)
-  - [TODO 10: Move the body](#todo-10-move-the-body)
-  - [TODO 11: Handle Apple Collisions](#todo-11-handle-apple-collisions)
-  - [TODO 12: Check for snake collisions with itself](#todo-12-check-for-snake-collisions-with-itself)
-  - [TODO 13: Make sure our Apple is placed only in available positions](#todo-13-make-sure-our-apple-is-placed-only-in-available-positions)
+  - [TODO 10: Check for collisions with the apple](#todo-10-check-for-collisions-with-the-apple)
+  - [TODO 11: Move the body](#todo-11-move-the-body)
+  - [TODO 12: Handle Apple Collisions](#todo-12-handle-apple-collisions)
+  - [TODO 13: Check for snake collisions with itself](#todo-13-check-for-snake-collisions-with-itself)
+  - [TODO 14: Make sure our Apple is placed only in available positions](#todo-14-make-sure-our-apple-is-placed-only-in-available-positions)
 - [🌟 Extra Challenges](#-extra-challenges)
 - [📤 Push Your Work](#-push-your-work)
 
@@ -86,10 +86,10 @@ Your project is graded based on completion of each major step. Make sure each TO
 | **TODO 8**     | Move the snake’s head based on direction      | 10     |
 | **TODO 9**     | Detect wall collisions                        | 10     |
 | **TODO 10**     | Detect apple collisions                       | 10     |
-| **TODO 10**    | Add new snake segment on apple collision      | 10     |
-| **TODO 11**    | Make the snake’s body follow the head         | 10     |
-| **TODO 12**    | Detect collisions with the snake itself       | 10     |
-| **TODO 13**    | Ensure apple spawns only in empty positions   | 10     |
+| **TODO 11**    | Add new snake segment on apple collision      | 10     |
+| **TODO 12**    | Make the snake’s body follow the head         | 10     |
+| **TODO 13**    | Detect collisions with the snake itself       | 10     |
+| **TODO 14**    | Ensure apple spawns only in empty positions   | 10     |
 
 # Part 1 - HTML & CSS
 
