@@ -9,8 +9,11 @@ var board = $("#board");
 var scoreElement = $("#score");
 var highScoreElement = $("#highScore");
 
-// TODO 4a: Create the snake, apple and score variables
 // Game Variables
+var score = 0; // variable to keep track of the score
+var started = false; // variable to keep track of whether the game has started
+
+// TODO 4a: Create the snake and apple variables
 
 // Constant Variables
 var ROWS = 20;
@@ -41,11 +44,8 @@ init();
 
 function init() {
   // TODO 4c-2: initialize the snake
-
   // TODO 4b-2: initialize the apple
-
   // TODO 5a: Initialize the interval
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -139,8 +139,8 @@ function handleAppleCollision() {
   If the tail is moving "down", place the next snakeSquare above it.
   etc...
   */
-  var row = 0;
-  var column = 0;
+  var row = snake.tail.row;
+  var column = snake.tail.column;
 
   // code to determine the row and column of the snakeSquare to add to the snake
 
@@ -163,6 +163,7 @@ function hasCollidedWithSnake() {
 function endGame() {
   // stop update function from running
   clearInterval(updateInterval);
+  started = false; // reset the started variable
 
   // clear board of all elements
   board.empty();
@@ -208,7 +209,16 @@ function makeSnakeSquare(row, column) {
 */
 function handleKeyDown(event) {
   // TODO 6a: make the handleKeyDown function register which key is pressed
-  
+
+  // If a valid direction key is pressed, start the game
+  if (
+    event.which === KEY.LEFT ||
+    event.which === KEY.RIGHT ||
+    event.which === KEY.UP ||
+    event.which === KEY.DOWN
+  ) {
+    started = true; // the game starts when the first key is pressed
+  }
 }
 
 /* Given a gameSquare (which may be a snakeSquare or the apple), position
